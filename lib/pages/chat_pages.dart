@@ -162,12 +162,15 @@ class _ChatPageState extends State<ChatPage> {
                                                               MaterialPageRoute(
                                                                 builder: (context) => DetailChat(
                                                                     uid: snapshot
-                                                                            .data
-                                                                            .docs[index]
-                                                                        ['uid'],
+                                                                        .data
+                                                                        .docs[
+                                                                            index]
+                                                                        .get(
+                                                                            'uid'),
                                                                     idChatRoom: snapshot
                                                                             .data
-                                                                            .docs[index]['uid'] +
+                                                                            .docs[index]
+                                                                            .get('uid') +
                                                                         "\$#@!#!@#!@%"),
                                                               ),
                                                             );
@@ -183,11 +186,12 @@ class _ChatPageState extends State<ChatPage> {
                                                                   DecorationImage(
                                                                 image:
                                                                     NetworkImage(
-                                                                  snapshot.data
-                                                                              .docs[
+                                                                  snapshot
+                                                                      .data
+                                                                      .docs[
                                                                           index]
-                                                                      [
-                                                                      'imgUid'],
+                                                                      .get(
+                                                                          'imgUid'),
                                                                 ),
                                                                 fit: BoxFit
                                                                     .cover,
@@ -235,78 +239,78 @@ class _ChatPageState extends State<ChatPage> {
                       SizedBox(
                         height: 15,
                       ),
-                      Column(
-                        children: List.generate(
-                          snapshot.data.docs.length,
-                          (index) {
-                            return StreamBuilder(
-                              stream: FirebaseFirestore.instance
-                                  .collection('match')
-                                  .where(
-                                    'ListUidMatch',
-                                    arrayContains:
-                                        snapshot.data.docs[index].get('uid'),
-                                  )
-                                  .snapshots(),
-                              builder: (BuildContext context,
-                                  AsyncSnapshot<QuerySnapshot> snapshot2) {
-                                if (!snapshot2.hasData) {
-                                  return Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                }
-                                if (snapshot2.data.docs.length == 1) {
-                                  return Column(
-                                    children: List.generate(
-                                      snapshot2.data.docs.length,
-                                      (index2) {
-                                        return Padding(
-                                          padding: const EdgeInsets.only(
-                                            right: 10,
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 70,
-                                                height: 70,
-                                                child: Stack(
-                                                  children: <Widget>[
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) => DetailChat(
-                                                                uid: snapshot
-                                                                            .data
-                                                                            .docs[
-                                                                        index]
-                                                                    ['uid'],
-                                                                idChatRoom: snapshot
-                                                                            .data
-                                                                            .docs[index]
-                                                                        [
-                                                                        'uid'] +
-                                                                    "\$#@!#!@#!@%"),
-                                                          ),
-                                                        );
-                                                      },
-                                                    )
-                                                  ],
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  );
-                                }
-                              },
-                            );
-                          },
-                        ),
-                      ),
+                      // Column(
+                      //   children: List.generate(
+                      //     snapshot.data.docs.length,
+                      //     (index) {
+                      //       return StreamBuilder(
+                      //         stream: FirebaseFirestore.instance
+                      //             .collection('match')
+                      //             .where(
+                      //               'ListUidMatch',
+                      //               arrayContains:
+                      //                   snapshot.data.docs[index].get('uid'),
+                      //             )
+                      //             .snapshots(),
+                      //         builder: (BuildContext context,
+                      //             AsyncSnapshot<QuerySnapshot> snapshot2) {
+                      //           if (!snapshot2.hasData) {
+                      //             return Center(
+                      //               child: CircularProgressIndicator(),
+                      //             );
+                      //           }
+                      //           if (snapshot2.data.docs.length == 1) {
+                      //             return Column(
+                      //               children: List.generate(
+                      //                 snapshot2.data.docs.length,
+                      //                 (index2) {
+                      //                   return Padding(
+                      //                     padding: const EdgeInsets.only(
+                      //                       right: 10,
+                      //                     ),
+                      //                     child: Row(
+                      //                       children: [
+                      //                         Container(
+                      //                           width: 70,
+                      //                           height: 70,
+                      //                           child: Stack(
+                      //                             children: <Widget>[
+                      //                               GestureDetector(
+                      //                                 onTap: () {
+                      //                                   Navigator.push(
+                      //                                     context,
+                      //                                     MaterialPageRoute(
+                      //                                       builder: (context) => DetailChat(
+                      //                                           uid: snapshot
+                      //                                               .data
+                      //                                               .docs[index]
+                      //                                               .get('uid'),
+                      //                                           idChatRoom: snapshot
+                      //                                                   .data
+                      //                                                   .docs[
+                      //                                                       index]
+                      //                                                   .get(
+                      //                                                       'uid') +
+                      //                                               "\$#@!#!@#!@%"),
+                      //                                     ),
+                      //                                   );
+                      //                                 },
+                      //                               )
+                      //                             ],
+                      //                           ),
+                      //                         )
+                      //                       ],
+                      //                     ),
+                      //                   );
+                      //                 },
+                      //               ),
+                      //             );
+                      //           }
+                      //         },
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],

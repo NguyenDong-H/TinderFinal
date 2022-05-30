@@ -269,13 +269,15 @@ class _RegisterPageState extends State<RegisterPage> {
         'name': '',
         'img': '',
         'school': '',
+        'ListUidMatch': FieldValue.arrayUnion([]),
         'sexChoose': '',
         'SexOrientation': 'https://www.w3schools.com/w3images/avatar2.png',
       });
       await FirebaseFirestore.instance.collection('match').doc(user.uid).set({
         'uid': user.uid,
-        'ListUidMatch': '',
+        'ListUidMatch': FieldValue.arrayUnion([]),
         'name': '',
+        'active': true,
       });
       Fluttertoast.showToast(
           msg: "Welcome to Tinder",

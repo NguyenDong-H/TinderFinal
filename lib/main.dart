@@ -13,6 +13,6 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: RootApp(),
+    home: LoginPage(),
   ));
 }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:finalproject/pages/DetailChat.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,67 +8,26 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/widgets/story_view.dart';
 
-class MatchPage extends StatelessWidget {
+class MatchPage extends StatefulWidget {
+  const MatchPage({Key key, @required this.uidCheck}) : super(key: key);
   final String uidCheck;
 
-  MatchPage({Key key, @required this.uidCheck}) : super(key: key);
-  final StoryController controller = StoryController();
+  @override
+  State<MatchPage> createState() => _MatchPageState();
+}
+
+class _MatchPageState extends State<MatchPage> {
+  TextEditingController _value = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-    void callEmoji() {
-      print('Emoji Icon Pressed...');
-    }
-
-    void callAttachFile() {
-      print('Attach File Icon Pressed...');
-    }
-
-    void callCamera() {
-      print('Camera Icon Pressed...');
-    }
-
-    void callVoice() {
-      print('Voice Icon Pressed...');
-    }
-
-    Widget moodIcon() {
-      return IconButton(
-          icon: const Icon(
-            Icons.mood,
-            color: Color(0xFF00BFA5),
-          ),
-          onPressed: () => callEmoji());
-    }
-
-    Widget attachFile() {
-      return IconButton(
-        icon: const Icon(Icons.attach_file, color: Color(0xFF00BFA5)),
-        onPressed: () => callAttachFile(),
-      );
-    }
-
-    Widget camera() {
-      return IconButton(
-        icon: const Icon(Icons.photo_camera, color: Color(0xFF00BFA5)),
-        onPressed: () => callCamera(),
-      );
-    }
-
-    Widget voiceIcon() {
-      return const Icon(
-        Icons.keyboard_voice,
-        color: Colors.white,
-      );
-    }
-
     return Scaffold(
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection('user')
-              .where('uid', isEqualTo: uidCheck)
+              .where('uid', isEqualTo: widget.uidCheck)
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -139,8 +99,10 @@ class MatchPage extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                     child: TextField(
+                                      autocorrect: false,
+                                      controller: _value,
                                       decoration: InputDecoration(
                                           contentPadding:
                                               EdgeInsets.only(left: 15),
@@ -153,10 +115,46 @@ class MatchPage extends StatelessWidget {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(right: 15),
-                                    child: Text(
-                                      "Gửi",
-                                      style: TextStyle(
-                                        color: Colors.blue,
+                                    child: InkWell(
+                                      onTap: () async {
+                                        String idChatRoom = snapshot
+                                                .data.docs[index]
+                                                .get('uid') +
+                                            "\$#@!#!@#!@%";
+                                        User user =
+                                            FirebaseAuth.instance.currentUser;
+                                        await FirebaseFirestore.instance
+                                            .collection('chat')
+                                            .add(
+                                          {
+                                            'uidSender': user.uid,
+                                            'content': _value.text,
+                                            'createAt': Timestamp.now(),
+                                            'idChatroom': idChatRoom,
+                                            'uidRevicer': snapshot
+                                                .data.docs[index]
+                                                .get('uid')
+                                          },
+                                        );
+                                        _value.clear();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => DetailChat(
+                                                uid: snapshot.data.docs[index]
+                                                    .get('uid'),
+                                                idChatRoom: snapshot
+                                                        .data.docs[index]
+                                                        .get('uid') +
+                                                    "\$#@!#!@#!@%"),
+                                          ),
+                                        );
+                                      },
+                                      child: Text(
+                                        "Gửi",
+                                        style: TextStyle(
+                                          color: Colors.blue,
+                                        ),
                                       ),
                                     ),
                                   )
