@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/data/account_json.dart';
+import 'package:finalproject/pages/login.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class _UserPageState extends State<UserPage> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: grey.withOpacity(0.2),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
@@ -222,7 +224,22 @@ class _UserPageState extends State<UserPage> {
                             ],
                           )
                         ],
-                      )
+                      ),
+                      Expanded(
+                          child: TextButton(
+                              onPressed: () {
+                                FirebaseAuth.instance.currentUser.delete();
+                                Navigator.pop(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginPage(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'SIGN OUT',
+                                style: TextStyle(color: Colors.pinkAccent),
+                              ))),
                     ],
                   ),
                 ),

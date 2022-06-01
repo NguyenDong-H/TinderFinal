@@ -75,15 +75,16 @@ class _RootAppState extends State<RootApp> {
 
   AppBar getAppBar() {
     return AppBar(
-        backgroundColor: white,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: Center(
-          child: IconButton(
-            onPressed: () {},
-            icon: Image.asset("assets/images/logo.png"),
-            iconSize: 150,
-          ),
-        ));
+      backgroundColor: white,
+      elevation: 0,
+      automaticallyImplyLeading: false,
+      title: Center(
+        child: IconButton(
+          onPressed: () {},
+          icon: Image.asset("assets/images/logo.png"),
+          iconSize: 150,
+        ),
+      ),
+    );
   }
 }

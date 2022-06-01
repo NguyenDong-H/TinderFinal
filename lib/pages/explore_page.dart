@@ -71,7 +71,7 @@ class _ExplorePageState extends State<ExplorePage> {
                         child: Container(
                           // color: Colors.blue,
                           height: size.height,
-                          padding: EdgeInsets.only(bottom: 170),
+                          padding: EdgeInsets.only(bottom: 10),
                           child: TinderSwapCard(
                             maxWidth: size.width,
                             maxHeight: size.height * 0.75,
@@ -176,7 +176,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                             width: 10,
                                                           ),
                                                           Text(
-                                                            "Recentyly Active",
+                                                            "Recently Active",
                                                             style: TextStyle(
                                                               fontSize: 18,
                                                               color: white,
@@ -225,10 +225,9 @@ class _ExplorePageState extends State<ExplorePage> {
                                                                     padding:
                                                                         const EdgeInsets
                                                                             .only(
-                                                                      left:
-                                                                          10.0,
+                                                                      left: 1.0,
                                                                       right:
-                                                                          10.0,
+                                                                          5.0,
                                                                       bottom: 3,
                                                                       top: 3,
                                                                     ),
@@ -303,7 +302,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                 ),
                                                 Expanded(
                                                   child: Container(
-                                                    width: size.width * 0.2,
+                                                    width: size.width * 0.1,
                                                     child: Center(
                                                       child: Icon(
                                                         Icons.info,
@@ -457,7 +456,7 @@ class _ExplorePageState extends State<ExplorePage> {
                       child: Container(
                         // color: Colors.blue,
                         height: size.height,
-                        padding: EdgeInsets.only(bottom: 170),
+                        padding: EdgeInsets.only(bottom: 10),
                         child: TinderSwapCard(
                           maxWidth: size.width,
                           maxHeight: size.height * 0.75,
@@ -581,8 +580,9 @@ class _ExplorePageState extends State<ExplorePage> {
                                                             return Padding(
                                                               padding:
                                                                   const EdgeInsets
-                                                                          .only(
-                                                                      right: 8),
+                                                                          .symmetric(
+                                                                      vertical:
+                                                                          8),
                                                               child: Container(
                                                                 decoration:
                                                                     BoxDecoration(
@@ -605,7 +605,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                                       const EdgeInsets
                                                                           .only(
                                                                     left: 10.0,
-                                                                    right: 10.0,
+                                                                    right: 5.0,
                                                                     bottom: 3,
                                                                     top: 3,
                                                                   ),
