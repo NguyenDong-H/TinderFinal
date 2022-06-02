@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'package:finalproject/pages/home/root_app.dart';
 import 'package:finalproject/pages/loginPhone/SexualOrientation_page.dart';
 import 'package:finalproject/pages/loginPhone/favorite_page.dart';
 import 'package:finalproject/pages/login.dart';
@@ -14,8 +15,8 @@ Future<void> main() async {
   User user = FirebaseAuth.instance.currentUser;
 
   runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    // home: user != null ? RootApp() : LoginPage()));
-    home: LoginPage(),
-  ));
+      debugShowCheckedModeBanner: false,
+      home: user != null ? RootApp() : LoginPage()));
+  // home: LoginPage(),
+  // ));
 }

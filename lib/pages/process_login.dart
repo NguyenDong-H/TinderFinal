@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginMutilPage extends StatefulWidget {
   const LoginMutilPage({key}) : super(key: key);
@@ -18,6 +19,7 @@ class LoginMutilPage extends StatefulWidget {
 
 class _LoginMutilPageState extends State<LoginMutilPage> {
   var loading = false;
+
   void _loginFacebook() async {
     setState(() {
       loading = true;
@@ -65,6 +67,7 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
           'name': userData['name'],
           'active': true,
           'uid': user.uid,
+          'imgUid': userData['picture']['data']['url'],
           'ListUidMatch': FieldValue.arrayUnion([]),
         });
 
@@ -75,6 +78,109 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
       }
     } on Exception catch (e) {
       print("error");
+    } finally {
+      setState(() {
+        loading = false;
+      });
+    }
+  }
+
+  void _loginWithGoogle() async {
+    setState(() {
+      loading = true;
+    });
+    final googleSignIn = GoogleSignIn(scopes: ['email']);
+    try {
+      final googleSignInAccount = await googleSignIn.signIn();
+      if (googleSignInAccount == null) {
+        setState(() {
+          loading = false;
+        });
+        return;
+      }
+      final googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      User user = FirebaseAuth.instance.currentUser;
+
+      final QuerySnapshot result = await FirebaseFirestore.instance
+          .collection('user')
+          .where(
+            'email',
+            isEqualTo: googleSignInAccount.email,
+          )
+          .limit(1)
+          .get();
+      final List<DocumentSnapshot> documents = result.docs;
+      if (documents.length > 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => RootApp()),
+        );
+      } else {
+        await FirebaseFirestore.instance.collection('user').doc(user.uid).set({
+          'email': googleSignInAccount.email,
+          'img': FieldValue.arrayUnion([googleSignInAccount.photoUrl]),
+          'name': googleSignInAccount.displayName,
+          'birthday': '',
+          'favorite': '',
+          'gender': '',
+          'school': '',
+          'ListUidMatch': FieldValue.arrayUnion([]),
+          'sexChoose': '',
+          'uid': user.uid,
+          'SexOrientation': 'https://www.w3schools.com/w3images/avatar2.png',
+        });
+        await FirebaseFirestore.instance.collection('match').doc(user.uid).set({
+          'name': googleSignInAccount.displayName,
+          'active': true,
+          'uid': user.uid,
+          'imgUid': googleSignInAccount.photoUrl,
+          'ListUidMatch': FieldValue.arrayUnion([]),
+        });
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => WelcomePage()),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      var content = '';
+      switch (e.code) {
+        case 'account-exists-with-diffrent-cresdential':
+          content = 'This account exists with a diffrent sign in provider';
+          break;
+        case 'invalid-credential':
+          content = 'Unknow error has occurred';
+          break;
+        case 'operation-not-allowed':
+          content = 'This is operation is not allowed';
+          break;
+        case 'user-disabled':
+          content = 'The user you tried to log into is disabled';
+          break;
+        case 'user-not-found':
+          content = 'The user you tried to log into was not found';
+          break;
+      }
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Log in with google failed'),
+          content: Text(content),
+          actions: [
+            TextButton(
+              onPressed: () {
+                print('Succcess');
+              },
+              child: Text('Ok'),
+            )
+          ],
+        ),
+      );
     } finally {
       setState(() {
         loading = false;
@@ -128,7 +234,9 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
             ),
             InkWell(
               borderRadius: BorderRadius.circular(60),
-              onTap: (() {}),
+              onTap: () {
+                _loginWithGoogle();
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(60),
@@ -140,7 +248,7 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
                 height: 50,
                 child: Center(
                   child: Text(
-                    "ĐĂNG NHẬP VỚI APPLE",
+                    "ĐĂNG NHẬP VỚI Google",
                     style: TextStyle(
                       color: white,
                       fontWeight: FontWeight.w500,

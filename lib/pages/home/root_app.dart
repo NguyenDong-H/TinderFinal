@@ -1,7 +1,7 @@
 import 'package:finalproject/pages/home/chat/chat_pages.dart';
 import 'package:finalproject/pages/home/explore_page.dart';
 import 'package:finalproject/pages/home/like_pages.dart';
-import 'package:finalproject/pages/home/user_pages.dart';
+import 'package:finalproject/pages/home/user/user_pages.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

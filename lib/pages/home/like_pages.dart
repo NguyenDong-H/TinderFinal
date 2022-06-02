@@ -24,7 +24,7 @@ class _LikePageState extends State<LikePage> {
       backgroundColor: white,
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
-            .collection('match')
+            .collection('user')
             .where('ListUidMatch', arrayContains: user.uid)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -87,7 +87,7 @@ class _LikePageState extends State<LikePage> {
                                   borderRadius: BorderRadius.circular(10),
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                        snapshot.data.docs[index]['imgUid'],
+                                        snapshot.data.docs[index]['img'][0],
                                       ),
                                       fit: BoxFit.cover)),
                             ),
@@ -107,57 +107,31 @@ class _LikePageState extends State<LikePage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  snapshot.data.docs[index]['active']
-                                      ? Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 8,
-                                                height: 8,
-                                                decoration: BoxDecoration(
-                                                  color: green,
-                                                  shape: BoxShape.circle,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text(
-                                                "Recently Active",
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: white,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      : Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 8,
-                                                height: 8,
-                                                decoration: BoxDecoration(
-                                                  color: grey,
-                                                  shape: BoxShape.circle,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text(
-                                                "Offline",
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: white,
-                                                ),
-                                              )
-                                            ],
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: 8,
+                                          height: 8,
+                                          decoration: BoxDecoration(
+                                            color: green,
+                                            shape: BoxShape.circle,
                                           ),
                                         ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          "Recently Active",
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: white,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
                             ),

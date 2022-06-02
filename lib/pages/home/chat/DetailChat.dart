@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:finalproject/pages/home/user/DetailUser.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,22 +68,40 @@ class _DetailChatState extends State<DetailChat> {
                     widget.uid) {
                   return Container(
                     alignment: Alignment.centerLeft,
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey,
-                      ),
-                      child: Text(
-                        snapshot.data.docs[indexMessage].get('content'),
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
+                    child: Row(
+                      children: [
+                        //  Container(
+                        //       width: 45,
+                        //       height: 45,
+                        //       decoration: BoxDecoration(
+                        //         shape: BoxShape.circle,
+                        //         image: DecorationImage(
+                        //           image: NetworkImage(
+                        //             snapshot.data.docs[indexMessage]['img'][0],
+                        //           ),
+                        //           fit: BoxFit.cover,
+                        //         ),
+                        //       ),
+                        //     ),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 14),
+                          margin:
+                              EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.grey,
+                          ),
+                          child: Text(
+                            snapshot.data.docs[indexMessage].get('content'),
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   );
                 }
@@ -137,16 +156,29 @@ class _DetailChatState extends State<DetailChat> {
                           SizedBox(
                             height: 25,
                           ),
-                          Container(
-                            width: 220,
-                            height: 220,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  snapshotUser.data.docs[indexUser]['img'][0],
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetailUser(
+                                    uid: snapshotUser.data.docs[indexUser]
+                                        .get('uid'),
+                                  ),
                                 ),
-                                fit: BoxFit.cover,
+                              );
+                            },
+                            child: Container(
+                              width: 220,
+                              height: 220,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    snapshotUser.data.docs[indexUser]['img'][0],
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
