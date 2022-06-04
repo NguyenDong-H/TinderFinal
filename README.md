@@ -1,6 +1,25 @@
 # finalproject
 
-A new Flutter project.
+1/ Cấu hình flutter version bị cũ 
+-----> Nên config khác nhau , xóa theo lỗi hướng dẫn hoặc copy paste 
+
+Truy cập đường link C:\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src ( nơi đặt sdk của flutter )
+Tìm file nhtsa_model.dart 
+
+Copy phần code đã đc sửa từ file mhtsa_model.dart được cung cấp khi clone project
+
+2/ Cấu hình developer facebook
+
+-> Cài đặt thư viện OpenSSL -> Chỉnh sửa path 
+-> keytool -exportcert -alias androiddebugkey -keystore "C:\Users\USERNAME\.android\debug.keystore" | "PATH_TO_OPENSSL_LIBRARY\bin\openssl" sha1 -binary | "PATH_TO_OPENSSL_LIBRARY\bin\openssl" base64
+-> Copy vào run bằng cmd 
+
+3/ Đường link video hướng dẫn chạy project khi bị lỗi như mục 1, hướng dẫn get SAH-1 key và cài đặt thư viện OpenSSL để login bằng google và facebook
+https://www.youtube.com/watch?v=aGRO6fh3lP4sS
+
+4/ Đường link video demo project của nhóm:
+https://www.youtube.com/watch?v=kTAZaXiQ8tA
+
 
 ## Getting Started
 
