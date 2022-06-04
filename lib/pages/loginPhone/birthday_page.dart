@@ -45,101 +45,106 @@ class _BirthdayPageState extends State<BirthdayPage> {
   }
 
   Widget getBody() {
-    return Column(
+    return ListView(
       children: [
-        Container(
-          // color: Colors.blue,
-          margin: EdgeInsets.only(right: 50, left: 70, top: 50),
-          child: Text(
-            "Sinh nhật của tôi là",
-            style: TextStyle(
-              color: black,
-              fontWeight: FontWeight.w500,
-              fontSize: 60,
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Container(
-          // color: Colors.blue,
-          margin: EdgeInsets.only(left: 55, right: 70),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-            child: Form(
-              key: _formKey,
-              child: Container(
-                height: 200,
-                child: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.date,
-                  initialDateTime: DateTime(1969, 1, 1),
-                  onDateTimeChanged: (DateTime newDateTime) {
-                    setState(() {
-                      _chosenDateTime = newDateTime;
-                    });
-
-                    // Do something
-                  },
-                ),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 9,
-        ),
-        Container(
-          // color: Colors.blue,
-          // color: Colors.blue,
-          margin: EdgeInsets.only(left: 60, right: 65),
-          child: Text(
-            "Đây là cách tên bạn hiển thị trên Tinder và bạn sẽ không thay đổi về sau",
-            style: TextStyle(
-              color: grey,
-              fontSize: 17,
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        InkWell(
-          borderRadius: BorderRadius.circular(60),
-          onTap: (() async {
-            // if (!_formKey.currentState.validate()) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => GenderUserPage()),
-              // );
-            );
-            User user = FirebaseAuth.instance.currentUser;
-            await FirebaseFirestore.instance
-                .collection('user')
-                .doc(user.uid)
-                .update({
-              'birthday': _chosenDateTime.toString(),
-            });
-            // } else {
-            //   return;
-            // }
-          }),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              color: Color.fromARGB(255, 255, 25, 75),
-            ),
-            width: 320,
-            height: 50,
-            child: Center(
+        Column(
+          children: [
+            Container(
+              // color: Colors.blue,
+              margin: EdgeInsets.only(right: 50, left: 70, top: 50),
               child: Text(
-                "TIẾP TỤC",
+                "Sinh nhật của tôi là",
                 style: TextStyle(
+                  color: black,
                   fontWeight: FontWeight.w500,
+                  fontSize: 60,
                 ),
               ),
             ),
-          ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              // color: Colors.blue,
+              margin: EdgeInsets.only(left: 55, right: 70),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: Form(
+                  key: _formKey,
+                  child: Container(
+                    height: 200,
+                    child: CupertinoDatePicker(
+                      mode: CupertinoDatePickerMode.date,
+                      initialDateTime: DateTime(1969, 1, 1),
+                      onDateTimeChanged: (DateTime newDateTime) {
+                        setState(() {
+                          _chosenDateTime = newDateTime;
+                        });
+
+                        // Do something
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 9,
+            ),
+            Container(
+              // color: Colors.blue,
+              // color: Colors.blue,
+              margin: EdgeInsets.only(left: 60, right: 65),
+              child: Text(
+                "Đây là cách tên bạn hiển thị trên Tinder và bạn sẽ không thay đổi về sau",
+                style: TextStyle(
+                  color: grey,
+                  fontSize: 17,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            InkWell(
+              borderRadius: BorderRadius.circular(60),
+              onTap: (() async {
+                // if (!_formKey.currentState.validate()) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GenderUserPage()),
+                  // );
+                );
+                User user = FirebaseAuth.instance.currentUser;
+                await FirebaseFirestore.instance
+                    .collection('user')
+                    .doc(user.uid)
+                    .update({
+                  'birthday': _chosenDateTime.toString(),
+                });
+                // } else {
+                //   return;
+                // }
+              }),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(60),
+                  color: Color.fromARGB(255, 255, 25, 75),
+                ),
+                width: 320,
+                height: 50,
+                child: Center(
+                  child: Text(
+                    "TIẾP TỤC",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );

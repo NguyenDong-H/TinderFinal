@@ -1,10 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/pages/home/chat/chat_pages.dart';
 import 'package:finalproject/pages/home/explore_page.dart';
 import 'package:finalproject/pages/home/like_pages.dart';
 import 'package:finalproject/pages/home/user/user_pages.dart';
 import 'package:finalproject/theme/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../category/category_home.dart';
 
 class RootApp extends StatefulWidget {
   const RootApp({key}) : super(key: key);
@@ -15,6 +19,8 @@ class RootApp extends StatefulWidget {
 
 class _RootAppState extends State<RootApp> {
   int pageIndex = 0;
+  User user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,15 +37,19 @@ class _RootAppState extends State<RootApp> {
           ? "assets/images/explore_active_icon.svg"
           : "assets/images/explore_icon.svg",
       pageIndex == 1
+          ? "assets/images/iconsearchactive.svg"
+          : "assets/images/dashboard.svg",
+      pageIndex == 2
           ? "assets/images/likes_active_icon.svg"
           : "assets/images/likes_icon.svg",
-      pageIndex == 2
+      pageIndex == 3
           ? "assets/images/chat_active_icon.svg"
           : "assets/images/chat_icon.svg",
-      pageIndex == 3
+      pageIndex == 4
           ? "assets/images/account_active_icon.svg"
-          : "assets/images/account_icon.svg"
+          : "assets/images/account_icon.svg",
     ];
+
     return Container(
       height: 80,
       child: Padding(
@@ -66,6 +76,7 @@ class _RootAppState extends State<RootApp> {
       index: pageIndex,
       children: [
         ExplorePage(),
+        DiscoveryScreen(),
         LikePage(),
         ChatPage(),
         UserPage(),
@@ -78,11 +89,15 @@ class _RootAppState extends State<RootApp> {
       backgroundColor: white,
       elevation: 0,
       automaticallyImplyLeading: false,
-      title: Center(
-        child: IconButton(
-          onPressed: () {},
-          icon: Image.asset("assets/images/logo.png"),
-          iconSize: 150,
+      title: Container(
+        child: Center(
+          child: IconButton(
+            onPressed: () {},
+            icon: Image.asset(
+              "assets/images/logo.png",
+            ),
+            iconSize: 150,
+          ),
         ),
       ),
     );

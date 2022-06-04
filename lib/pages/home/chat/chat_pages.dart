@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/data/chats_json.dart';
-import 'package:finalproject/pages/home/chat/DetailChat.dart';
+import 'package:finalproject/pages/DetailChat.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -160,18 +160,18 @@ class _ChatPageState extends State<ChatPage> {
                                                             Navigator.push(
                                                               context,
                                                               MaterialPageRoute(
-                                                                builder: (context) => DetailChat(
-                                                                    uid: snapshot
-                                                                        .data
-                                                                        .docs[
-                                                                            index]
-                                                                        .get(
-                                                                            'uid'),
-                                                                    idChatRoom: snapshot
-                                                                            .data
-                                                                            .docs[index]
-                                                                            .get('uid') +
-                                                                        "\$#@!#!@#!@%"),
+                                                                builder:
+                                                                    (context) =>
+                                                                        DetailChat(
+                                                                  uid: snapshot
+                                                                      .data
+                                                                      .docs[
+                                                                          index]
+                                                                      .get(
+                                                                          'uid'),
+                                                                  idChatRoom:
+                                                                      "\$#@!#!@#!@#@!#!@!@%",
+                                                                ),
                                                               ),
                                                             );
                                                           },
@@ -239,78 +239,6 @@ class _ChatPageState extends State<ChatPage> {
                       SizedBox(
                         height: 15,
                       ),
-                      // Column(
-                      //   children: List.generate(
-                      //     snapshot.data.docs.length,
-                      //     (index) {
-                      //       return StreamBuilder(
-                      //         stream: FirebaseFirestore.instance
-                      //             .collection('match')
-                      //             .where(
-                      //               'ListUidMatch',
-                      //               arrayContains:
-                      //                   snapshot.data.docs[index].get('uid'),
-                      //             )
-                      //             .snapshots(),
-                      //         builder: (BuildContext context,
-                      //             AsyncSnapshot<QuerySnapshot> snapshot2) {
-                      //           if (!snapshot2.hasData) {
-                      //             return Center(
-                      //               child: CircularProgressIndicator(),
-                      //             );
-                      //           }
-                      //           if (snapshot2.data.docs.length == 1) {
-                      //             return Column(
-                      //               children: List.generate(
-                      //                 snapshot2.data.docs.length,
-                      //                 (index2) {
-                      //                   return Padding(
-                      //                     padding: const EdgeInsets.only(
-                      //                       right: 10,
-                      //                     ),
-                      //                     child: Row(
-                      //                       children: [
-                      //                         Container(
-                      //                           width: 70,
-                      //                           height: 70,
-                      //                           child: Stack(
-                      //                             children: <Widget>[
-                      //                               GestureDetector(
-                      //                                 onTap: () {
-                      //                                   Navigator.push(
-                      //                                     context,
-                      //                                     MaterialPageRoute(
-                      //                                       builder: (context) => DetailChat(
-                      //                                           uid: snapshot
-                      //                                               .data
-                      //                                               .docs[index]
-                      //                                               .get('uid'),
-                      //                                           idChatRoom: snapshot
-                      //                                                   .data
-                      //                                                   .docs[
-                      //                                                       index]
-                      //                                                   .get(
-                      //                                                       'uid') +
-                      //                                               "\$#@!#!@#!@%"),
-                      //                                     ),
-                      //                                   );
-                      //                                 },
-                      //                               )
-                      //                             ],
-                      //                           ),
-                      //                         )
-                      //                       ],
-                      //                     ),
-                      //                   );
-                      //                 },
-                      //               ),
-                      //             );
-                      //           }
-                      //         },
-                      //       );
-                      //     },
-                      //   ),
-                      // ),
                     ],
                   ),
                 ],

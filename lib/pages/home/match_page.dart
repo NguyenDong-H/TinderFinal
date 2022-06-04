@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/pages/home/chat/DetailChat.dart';
 import 'package:finalproject/theme/colors.dart';
@@ -117,10 +119,6 @@ class _MatchPageState extends State<MatchPage> {
                                     margin: EdgeInsets.only(right: 15),
                                     child: InkWell(
                                       onTap: () async {
-                                        String idChatRoom = snapshot
-                                                .data.docs[index]
-                                                .get('uid') +
-                                            "\$#@!#!@#!@%";
                                         User user =
                                             FirebaseAuth.instance.currentUser;
                                         await FirebaseFirestore.instance
@@ -130,23 +128,24 @@ class _MatchPageState extends State<MatchPage> {
                                             'uidSender': user.uid,
                                             'content': _value.text,
                                             'createAt': Timestamp.now(),
-                                            'idChatroom': idChatRoom,
+                                            'idChatroom':
+                                                "\$#@!#!@#!@#@!#!@!@%",
                                             'uidRevicer': snapshot
                                                 .data.docs[index]
                                                 .get('uid')
                                           },
                                         );
+
                                         _value.clear();
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => DetailChat(
-                                                uid: snapshot.data.docs[index]
-                                                    .get('uid'),
-                                                idChatRoom: snapshot
-                                                        .data.docs[index]
-                                                        .get('uid') +
-                                                    "\$#@!#!@#!@%"),
+                                              uid: snapshot.data.docs[index]
+                                                  .get('uid'),
+                                              idChatRoom:
+                                                  "\$#@!#!@#!@#@!#!@!@%",
+                                            ),
                                           ),
                                         );
                                       },

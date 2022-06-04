@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/data/account_json.dart';
+import 'package:finalproject/pages/home/user/editInformation/editinfo_home.dart';
 import 'package:finalproject/pages/home/user/setting.dart';
 import 'package:finalproject/pages/home/user/shield/page/safe_center_screen.dart';
 import 'package:finalproject/pages/login.dart';
@@ -131,49 +132,34 @@ class _UserPageState extends State<UserPage> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 85,
-                                  height: 85,
-                                  child: Stack(
-                                    children: [
-                                      Container(
-                                        width: 80,
-                                        height: 80,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            gradient: LinearGradient(
-                                              colors: [
-                                                primary_one,
-                                                primary_two
-                                              ],
-                                            ),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: grey.withOpacity(0.1),
-                                                spreadRadius: 10,
-                                                blurRadius: 15,
-                                                // changes position of shadow
-                                              ),
-                                            ]),
-                                        child: Icon(
-                                          Icons.edit,
-                                          size: 45,
-                                          color: white,
-                                        ),
-                                      ),
-                                      Positioned(
-                                        bottom: 8,
-                                        right: 0,
-                                        child: Container(
-                                          width: 25,
-                                          height: 25,
+                          InkWell(
+                            onTap: () async {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditInfoHome()),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    width: 85,
+                                    height: 85,
+                                    child: Stack(
+                                      children: [
+                                        Container(
+                                          width: 80,
+                                          height: 80,
                                           decoration: BoxDecoration(
                                               shape: BoxShape.circle,
-                                              color: white,
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  primary_one,
+                                                  primary_two
+                                                ],
+                                              ),
                                               boxShadow: [
                                                 BoxShadow(
                                                   color: grey.withOpacity(0.1),
@@ -182,26 +168,53 @@ class _UserPageState extends State<UserPage> {
                                                   // changes position of shadow
                                                 ),
                                               ]),
-                                          child: Center(
-                                            child:
-                                                Icon(Icons.add, color: primary),
+                                          child: Icon(
+                                            Icons.edit,
+                                            size: 45,
+                                            color: white,
                                           ),
                                         ),
-                                      )
-                                    ],
+                                        Positioned(
+                                          bottom: 8,
+                                          right: 0,
+                                          child: Container(
+                                            width: 25,
+                                            height: 25,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: white,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color:
+                                                        grey.withOpacity(0.1),
+                                                    spreadRadius: 10,
+                                                    blurRadius: 15,
+                                                    // changes position of shadow
+                                                  ),
+                                                ]),
+                                            child: Center(
+                                              child: Icon(
+                                                Icons.add,
+                                                color: primary,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "CHỈNH SỬA HỒ SƠ",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      color: grey.withOpacity(0.8)),
-                                )
-                              ],
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "CHỈNH SỬA HỒ SƠ",
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        color: grey.withOpacity(0.8)),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                           InkWell(

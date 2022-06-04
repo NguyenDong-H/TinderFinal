@@ -27,7 +27,8 @@ class _UploadImage_PageState extends State<UploadImage_Page> {
         iconTheme: IconThemeData(
           color: black,
         ),
-        title: Center(
+        title: Container(
+          margin: EdgeInsets.only(left: 70),
           child: Text(
             'Thêm Ảnh',
             style: TextStyle(color: black, fontSize: 24),

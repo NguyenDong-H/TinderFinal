@@ -1,5 +1,13 @@
 import 'package:expandable_slider/expandable_slider.dart';
-import 'package:finalproject/pages/home/root_app.dart';
+import 'package:finalproject/pages/home/user/address/address_update.dart';
+import 'package:finalproject/pages/home/user/manage/active/active.dart';
+import 'package:finalproject/pages/home/user/manage/active/is_active.dart';
+import 'package:finalproject/pages/home/user/manage/manage_notification/manage_noti.dart';
+import 'package:finalproject/pages/home/user/manage/manage_reason/manage_reason.dart';
+import 'package:finalproject/pages/home/user/manage/manage_selective/manage_select.dart';
+import 'package:finalproject/pages/home/user/manage/manage_time/manage_time.dart';
+import 'package:finalproject/pages/home/user/manage/vaccine/vaccine_center.dart';
+
 import 'package:finalproject/pages/home/user/setting/setting_card.dart';
 import 'package:finalproject/pages/home/user/setting/update/updateLinkSocial/updateConnectiveSocial.dart';
 import 'package:finalproject/pages/home/user/setting/update/updateMail/updateMail.dart';
@@ -9,6 +17,7 @@ import 'package:finalproject/pages/home/user/setting/widget/setting_card1.dart';
 import 'package:finalproject/pages/home/user/setting/widget/setting_card2.dart';
 import 'package:finalproject/pages/home/user/setting/widget/star_card.dart';
 import 'package:finalproject/pages/home/user/setting/widget/thunder_card.dart';
+import 'package:finalproject/pages/home/user/sex_choices/sex.dart';
 
 import 'package:finalproject/pages/login.dart';
 import 'package:finalproject/theme/colors.dart';
@@ -275,10 +284,11 @@ class _SettingState extends State<Setting> {
                 children: [
                   InkWell(
                     onTap: () async {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => UpdateEmail()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AddressUpdate()),
+                      );
                     },
                     child: Hero(
                       tag: "Address",
@@ -407,7 +417,7 @@ class _SettingState extends State<Setting> {
                     onTap: () async {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdateEmail()),
+                        MaterialPageRoute(builder: (context) => SexChoices()),
                       );
                     },
                     child: Hero(
@@ -679,10 +689,12 @@ class _SettingState extends State<Setting> {
                       ),
                       // color: Colors.pink
 
-                      child: Text(" Tinder Plus",
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
+                      child: Text(
+                        " Tinder Plus",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -1057,11 +1069,11 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(builder: (context) => ManageReason()),
                       );
                     },
                     child: Hero(
-                      tag: "match",
+                      tag: "manage_reason",
                       child: Container(
                         padding:
                             const EdgeInsets.only(left: 5, top: 10, bottom: 10),
@@ -1126,11 +1138,11 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(builder: (context) => ManageSelect()),
                       );
                     },
                     child: Hero(
-                      tag: "match",
+                      tag: "manage_select",
                       child: Container(
                         padding:
                             const EdgeInsets.only(left: 5, top: 10, bottom: 10),
@@ -1195,11 +1207,11 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(builder: (context) => ManageNoti()),
                       );
                     },
                     child: Hero(
-                      tag: "match",
+                      tag: "manage_noti",
                       child: Container(
                         padding:
                             const EdgeInsets.only(left: 5, top: 10, bottom: 10),
@@ -1264,7 +1276,7 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(builder: (context) => ManageTime()),
                       );
                     },
                     child: Hero(
@@ -1333,7 +1345,8 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(
+                            builder: (context) => VaccineCenter()),
                       );
                     },
                     child: Hero(
@@ -1471,7 +1484,7 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(builder: (context) => Active()),
                       );
                     },
                     child: Hero(
@@ -1513,7 +1526,7 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(builder: (context) => IsActive()),
                       );
                     },
                     child: Hero(

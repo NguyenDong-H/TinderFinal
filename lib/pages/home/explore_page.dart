@@ -415,10 +415,14 @@ class _ExplorePageState extends State<ExplorePage> {
                                       [snapshot.data.docs[index].get('uid')]),
                                 });
 
-                                Navigator.of(context).push(MaterialPageRoute(
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
                                     builder: (context) => MatchPage(
-                                        uidCheck: snapshot.data.docs[index]
-                                            .get('uid'))));
+                                      uidCheck:
+                                          snapshot.data.docs[index].get('uid'),
+                                    ),
+                                  ),
+                                );
                               } else {
                                 print("không match");
                               }
@@ -835,6 +839,22 @@ class _ExplorePageState extends State<ExplorePage> {
                                       .update({
                                     "ListUidMatch": FieldValue.arrayUnion(
                                         [snapshot.data.docs[index].get('uid')]),
+                                  });
+                                  await FirebaseFirestore.instance
+                                      .collection('chat')
+                                      .add({
+                                    "idChatRoom": "123",
+                                    "uidRevicer":
+                                        snapshot.data.docs[index].get('uid'),
+                                    "uidSender": user.uid
+                                  });
+                                  await FirebaseFirestore.instance
+                                      .collection('chat')
+                                      .add({
+                                    "idChatRoom": "123",
+                                    "uidRevicer": user.uid,
+                                    "uidSender":
+                                        snapshot.data.docs[index].get('uid'),
                                   });
 
                                   Navigator.of(context).push(MaterialPageRoute(
