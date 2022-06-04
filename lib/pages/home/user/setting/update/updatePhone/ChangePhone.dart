@@ -1,24 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:finalproject/pages/home/user/setting/update/updatePhone/updatePhone.dart';
 import 'package:finalproject/pages/loginPhone/register_email.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({key}) : super(key: key);
+class ChangePhone extends StatefulWidget {
+  const ChangePhone({Key key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<ChangePhone> createState() => _ChangePhoneState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _ChangePhoneState extends State<ChangePhone> {
   @override
   final _formKey = GlobalKey<FormState>();
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -27,7 +25,6 @@ class _RegisterPageState extends State<RegisterPage> {
   String verificationID = "";
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController otpController = TextEditingController();
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: getAppbar(),
@@ -240,30 +237,14 @@ class _RegisterPageState extends State<RegisterPage> {
     await auth.signInWithCredential(credential).then((value) async {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => EmailRegisterPage()),
+        MaterialPageRoute(builder: (context) => UpdatePhone()),
       );
 
       User user = FirebaseAuth.instance.currentUser;
       await FirebaseFirestore.instance.collection('user').doc(user.uid).set({
         'phone': phoneNumber.text,
-        'uid': user.uid,
-        'birthday': '',
-        'email': '',
-        'favorite': '',
-        'gender': '',
-        'name': '',
-        'img': '',
-        'school': '',
-        'ListUidMatch': FieldValue.arrayUnion([]),
-        'sexChoose': '',
-        'SexOrientation': 'https://www.w3schools.com/w3images/avatar2.png',
       });
-      await FirebaseFirestore.instance.collection('match').doc(user.uid).set({
-        'uid': user.uid,
-        'ListUidMatch': FieldValue.arrayUnion([]),
-        'name': '',
-        'active': true,
-      });
+
       Fluttertoast.showToast(
           msg: "Welcome to Tinder",
           toastLength: Toast.LENGTH_SHORT,

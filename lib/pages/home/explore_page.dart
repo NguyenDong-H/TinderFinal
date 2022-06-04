@@ -40,6 +40,7 @@ class _ExplorePageState extends State<ExplorePage> {
             .snapshots(),
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot> snapshotListUid) {
+          print(snapshotListUid);
           if (!snapshotListUid.hasData) {
             return Center(
               child: CircularProgressIndicator(),

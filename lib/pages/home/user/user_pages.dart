@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/data/account_json.dart';
+import 'package:finalproject/pages/home/user/setting.dart';
+import 'package:finalproject/pages/home/user/shield/page/safe_center_screen.dart';
 import 'package:finalproject/pages/login.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -86,39 +88,48 @@ class _UserPageState extends State<UserPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            children: [
-                              Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: grey.withOpacity(0.1),
-                                        spreadRadius: 10,
-                                        blurRadius: 15,
-                                        // changes position of shadow
-                                      ),
-                                    ]),
-                                child: Icon(
-                                  Icons.settings,
-                                  size: 35,
-                                  color: grey.withOpacity(0.5),
+                          InkWell(
+                            onTap: () async {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Setting()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: grey.withOpacity(0.1),
+                                          spreadRadius: 10,
+                                          blurRadius: 15,
+                                          // changes position of shadow
+                                        ),
+                                      ]),
+                                  child: Icon(
+                                    Icons.settings,
+                                    size: 35,
+                                    color: grey.withOpacity(0.5),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "CÀI ĐẶT",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: grey.withOpacity(0.8)),
-                              )
-                            ],
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "CÀI ĐẶT",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: grey.withOpacity(0.8)),
+                                )
+                              ],
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
@@ -193,65 +204,51 @@ class _UserPageState extends State<UserPage> {
                               ],
                             ),
                           ),
-                          Column(
-                            children: [
-                              Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: grey.withOpacity(0.1),
-                                        spreadRadius: 10,
-                                        blurRadius: 15,
-                                        // changes position of shadow
-                                      ),
-                                    ]),
-                                child: Icon(
-                                  Icons.shield,
-                                  size: 35,
-                                  color: grey.withOpacity(0.5),
+                          InkWell(
+                            onTap: () async {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SafeCenterScreen()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: grey.withOpacity(0.1),
+                                          spreadRadius: 10,
+                                          blurRadius: 15,
+                                          // changes position of shadow
+                                        ),
+                                      ]),
+                                  child: Icon(
+                                    Icons.shield,
+                                    size: 35,
+                                    color: grey.withOpacity(0.5),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "AN TOÀN",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: grey.withOpacity(0.8)),
-                              )
-                            ],
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "AN TOÀN",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: grey.withOpacity(0.8)),
+                                )
+                              ],
+                            ),
                           )
                         ],
                       ),
-                      Expanded(
-                          child: TextButton(
-                              onPressed: () async {
-                                FirebaseAuth.instance
-                                    .signOut()
-                                    .then((value) => {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginPage()),
-                                          )
-                                        });
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) => LoginPage(),
-                                //   ),
-                                // );
-                              },
-                              child: Text(
-                                'SIGN OUT',
-                                style: TextStyle(color: Colors.pinkAccent),
-                              ))),
                     ],
                   ),
                 ),

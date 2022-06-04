@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,6 +19,17 @@ class _DetailUserState extends State<DetailUser> {
   User user = FirebaseAuth.instance.currentUser;
   List<String> arrayList = [];
   List<String> arrayList2 = [];
+  final audioPlayer = AudioPlayer();
+  bool isPlaying = false;
+  @override
+  void intitState() {
+    super.initState();
+    audioPlayer.onPlayerStateChanged.listen((state) {
+      setState(() {
+        isPlaying = state == PlayerState.PLAYING;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -269,6 +281,7 @@ class _DetailUserState extends State<DetailUser> {
                                             vertical: 5,
                                             horizontal: 10,
                                           ),
+                                          margin: EdgeInsets.only(right: 10),
                                           decoration: BoxDecoration(
                                             border: Border.all(
                                                 color: Color.fromARGB(
@@ -291,6 +304,7 @@ class _DetailUserState extends State<DetailUser> {
                                             vertical: 5,
                                             horizontal: 10,
                                           ),
+                                          margin: EdgeInsets.only(right: 10),
                                           decoration: BoxDecoration(
                                             border: Border.all(
                                               color: grey,
@@ -304,51 +318,150 @@ class _DetailUserState extends State<DetailUser> {
                                           ),
                                         );
                                       }
-
-                                      // } else {
-                                      //   return Container(
-                                      //     padding: EdgeInsets.symmetric(
-                                      //       vertical: 5,
-                                      //       horizontal: 10,
-                                      //     ),
-                                      //     decoration: BoxDecoration(
-                                      //       border: Border.all(
-                                      //         color: grey,
-                                      //       ),
-                                      //       borderRadius:
-                                      //           BorderRadius.circular(40),
-                                      //     ),
-                                      //     child: Text(
-                                      //       snapshot.data.docs[value]
-                                      //           .get('favorite')[favorite],
-                                      //     ),
-                                      //   );
-                                      // }
-                                      // }
-
-                                      // } else {
-                                      //   return Container(
-                                      //     padding: EdgeInsets.symmetric(
-                                      //       vertical: 5,
-                                      //       horizontal: 10,
-                                      //     ),
-                                      //     decoration: BoxDecoration(
-                                      //       border: Border.all(color: grey),
-                                      //       borderRadius:
-                                      //           BorderRadius.circular(40),
-                                      //     ),
-                                      //     child: Text(
-                                      //       snapshot.data.docs[value]
-                                      //           .get('favorite')[favorite],
-                                      //     ),
-                                      //   );
-                                      // }
                                     }
                                   },
                                 ),
                             ],
                           ),
                         ),
+                      ],
+                    ),
+                    Divider(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(top: 10, left: 25),
+                          child: Text(
+                            "Nhạc hiệu của tôi",
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 10, left: 25),
+                                  child: Text(
+                                    "Em của ngày hôm qua",
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: green,
+                                        ),
+                                        child: Icon(
+                                          Icons.wifi,
+                                          size: 17,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            child: Text(
+                                              "Sơn Tùng - MTP",
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Stack(
+                          children: [
+                            GestureDetector(
+                              onTap: () async {
+                                String url =
+                                    "https://thegrowingdeveloper.org/files/audios/quiet-time.mp3?b4869097e4";
+                                await audioPlayer.play(url);
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(right: 20),
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://amatrendy.net/cdn/files/loi-bai-hat-em-cua-ngay-hom-qua.jpg"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Divider(
+                      height: 15,
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          child: Text(
+                            "CHIA SẺ HỒ SƠ CỦA " +
+                                snapshot.data.docs[value].get('name'),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: black,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          "ĐỂ XEM BẠN BÈ NGHĨ SAO",
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
+                        )
+                      ],
+                    ),
+                    Divider(
+                      height: 15,
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "TRÌNH BÁO " + snapshot.data.docs[value].get('name'),
+                        )
                       ],
                     )
                   ],
