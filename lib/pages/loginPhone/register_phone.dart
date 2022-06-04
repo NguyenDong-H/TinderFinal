@@ -252,7 +252,8 @@ class _RegisterPageState extends State<RegisterPage> {
         'favorite': '',
         'gender': '',
         'name': '',
-        'img': '',
+        'img': FieldValue.arrayUnion(
+            ['https://www.w3schools.com/w3images/avatar2.png']),
         'school': '',
         'ListUidMatch': FieldValue.arrayUnion([]),
         'sexChoose': '',

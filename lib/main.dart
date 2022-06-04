@@ -21,6 +21,7 @@ Future<void> main() async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: user != null ? RootApp() : LoginPage(),
+      // home: LoginPage(),
     ),
   );
   // home: Setting(),
