@@ -1,6 +1,6 @@
 # finalproject
 
-+1/ Hướng dẫn cách cấu hình lại nếu gặp lỗi
+1/ Hướng dẫn cách cấu hình lại nếu gặp lỗi
 - Lỗi flutter version bị cũ ---> Nên config khác nhau , xóa theo lỗi hướng dẫn báo trong IDE đang xài hoặc copy paste file nhtsa_model.dart đã cung cấp vào
 -> Truy cập đường link C:\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src ( nơi đặt sdk của flutter )
 ---> Tìm file nhtsa_model.dart 
