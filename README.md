@@ -1,12 +1,11 @@
 # finalproject
 
-1/ Cấu hình flutter version bị cũ 
----> Nên config khác nhau , xóa theo lỗi hướng dẫn hoặc copy paste 
-
-Truy cập đường link C:\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src ( nơi đặt sdk của flutter )
++1/ Hướng dẫn cách cấu hình lại nếu gặp lỗi
+- Lỗi flutter version bị cũ ---> Nên config khác nhau , xóa theo lỗi hướng dẫn báo trong IDE đang xài hoặc copy paste file nhtsa_model.dart đã cung cấp vào
+-> Truy cập đường link C:\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src ( nơi đặt sdk của flutter )
 ---> Tìm file nhtsa_model.dart 
 
-Copy phần code đã đc sửa từ file mhtsa_model.dart được cung cấp khi clone project
+- Copy phần code đã đc sửa từ file nhtsa_model.dart được cung cấp khi clone project
 ---> và paste vào file nhtsa_model.dart bị báo lỗi
 
 2/ Cấu hình developer facebook
