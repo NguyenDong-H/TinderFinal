@@ -1,5 +1,4 @@
 # finalproject
-# fill by Quân
 
 1/ Hướng dẫn cách cấu hình lại nếu gặp lỗi
 - Lỗi flutter version bị cũ ---> Nên config khác nhau , xóa theo lỗi hướng dẫn báo trong IDE đang xài hoặc copy paste file nhtsa_model.dart đã cung cấp vào
@@ -21,6 +20,7 @@ https://www.youtube.com/watch?v=aGRO6fh3lP4sS
 4/ Đường link video demo project của nhóm:
 https://www.youtube.com/watch?v=kTAZaXiQ8tA
 
+5/ Updating later if have some problem!
 
 ## Getting Started
 
