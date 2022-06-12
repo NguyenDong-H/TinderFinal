@@ -2,6 +2,8 @@ import 'package:basic_utils/basic_utils.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+// Only use that file if your version Flutter sdk is higher than us 
+
 class NHTSAResult {
   String value;
   String valueId;
