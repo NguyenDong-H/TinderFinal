@@ -1,3 +1,4 @@
+//By Nguyễn Minh Quân and Phạm Thành Nhân
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/pages/addImage.dart';
 import 'package:finalproject/pages/root_app.dart';
