@@ -24,7 +24,7 @@ class _LikePageState extends State<LikePage> {
       backgroundColor: white,
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
-            .collection('user')
+            .collection('match')
             .where('ListUidMatch', arrayContains: user.uid)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -80,16 +80,47 @@ class _LikePageState extends State<LikePage> {
                         height: 250,
                         child: Stack(
                           children: [
-                            Container(
-                              width: (size.width - 15) / 2,
-                              height: 250,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                        snapshot.data.docs[index]['img'][0],
-                                      ),
-                                      fit: BoxFit.cover)),
+                            StreamBuilder(
+                              stream: FirebaseFirestore.instance
+                                  .collection('user')
+                                  .where('uid',
+                                      isEqualTo: snapshot.data.docs[index]
+                                          ['uid'])
+                                  .snapshots(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<QuerySnapshot> snapshotUser) {
+                                if (!snapshotUser.hasData) {
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+                                for (var i = 0;
+                                    i < snapshot.data.docs.length;
+                                    i++) {
+                                  if (snapshotUser.data.docs[i]
+                                          .get('img')
+                                          .length >
+                                      0) {
+                                    return Container(
+                                      width: (size.width - 15) / 2,
+                                      height: 250,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          image: DecorationImage(
+                                              image: NetworkImage(
+                                                snapshotUser.data.docs[i]
+                                                    .get('img')[0],
+                                              ),
+                                              fit: BoxFit.cover)),
+                                    );
+                                  } else {
+                                    return Container(
+                                      child: Text(""),
+                                    );
+                                  }
+                                }
+                              },
                             ),
                             Container(
                               width: (size.width - 15) / 2,

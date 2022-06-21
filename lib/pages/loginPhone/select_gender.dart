@@ -1,4 +1,3 @@
-//By Nguyễn Minh Quân
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/pages/loginPhone/SexualOrientation_page.dart';
 import 'package:finalproject/theme/colors.dart';

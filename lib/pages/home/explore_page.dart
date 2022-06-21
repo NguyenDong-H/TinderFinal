@@ -111,18 +111,23 @@ class _ExplorePageState extends State<ExplorePage> {
                               borderRadius: BorderRadius.circular(10),
                               child: Stack(
                                 children: [
-                                  Container(
-                                    width: size.width,
-                                    height: size.height,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: NetworkImage(snapshot
-                                            .data.docs[index]
-                                            .get('img')[0]),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
+                                  snapshot.data.docs[index].get('img').length !=
+                                          0
+                                      ? Container(
+                                          width: size.width,
+                                          height: size.height,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: NetworkImage(snapshot
+                                                  .data.docs[index]
+                                                  .get('img')[0]),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        )
+                                      : Container(
+                                          child: Text(""),
+                                        ),
                                   Container(
                                     width: size.width,
                                     height: size.height,

@@ -1,4 +1,3 @@
-//By Nguyễn Minh Quân
 import 'package:finalproject/pages/loginFacebook/SexualOrientation_page.dart';
 import 'package:finalproject/pages/loginFacebook/favorite_page.dart';
 import 'package:finalproject/theme/colors.dart';

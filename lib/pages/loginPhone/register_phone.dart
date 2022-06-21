@@ -1,4 +1,3 @@
-//By Nguyễn Minh Quân and Thành Nhân
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/pages/loginPhone/register_email.dart';
 import 'package:finalproject/theme/colors.dart';

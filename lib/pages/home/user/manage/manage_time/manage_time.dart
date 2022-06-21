@@ -1,4 +1,3 @@
-//By Nguyễn Minh Quân
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
