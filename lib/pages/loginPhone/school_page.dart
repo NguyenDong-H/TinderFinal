@@ -1,3 +1,4 @@
+//By Nguyễn Minh Quân
 import 'package:finalproject/pages/loginPhone/favorite_page.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:flutter/material.dart';
