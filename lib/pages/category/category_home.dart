@@ -1,3 +1,5 @@
+//By Nguyễn Hiểu Đông
+
 import 'package:finalproject/pages/category/discovery.dart';
 import 'package:finalproject/pages/category/foryou.dart';
 

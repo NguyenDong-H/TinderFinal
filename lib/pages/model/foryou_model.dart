@@ -1,3 +1,5 @@
+//By Nguyễn Hiểu Đông
+
 class ForyouModel {
   String title;
   String image;
