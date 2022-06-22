@@ -1,3 +1,5 @@
+//By Nguyễn Hiểu Đông
+
 class DiscoveryModel {
   String title;
   String image;
