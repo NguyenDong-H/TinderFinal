@@ -1,4 +1,4 @@
-//By Tất Tấn Lâm
+//Done
 import 'package:flutter/material.dart';
 
 class Disconect extends StatelessWidget {
