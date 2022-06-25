@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Female extends StatelessWidget {
   const Female({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

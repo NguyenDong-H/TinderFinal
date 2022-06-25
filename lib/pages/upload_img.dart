@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/pages/addImage.dart';
 import 'package:finalproject/pages/root_app.dart';
@@ -10,7 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class UploadImage_Page extends StatefulWidget {
-  const UploadImage_Page({Key key}) : super(key: key);
+  const UploadImage_Page({Key? key}) : super(key: key);
   @override
   State<UploadImage_Page> createState() => _UploadImage_PageState();
 }
@@ -18,7 +17,7 @@ class UploadImage_Page extends StatefulWidget {
 class _UploadImage_PageState extends State<UploadImage_Page> {
   bool tmp = false;
 
-  User user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +52,9 @@ class _UploadImage_PageState extends State<UploadImage_Page> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('user')
-            .where('uid', isEqualTo: user.uid)
+            .where('uid', isEqualTo: user?.uid)
             .snapshots(),
-        builder: (context, snapshot) {
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
           // Get docs from collection reference
 
           if (!snapshot.hasData) {
@@ -84,7 +83,7 @@ class _UploadImage_PageState extends State<UploadImage_Page> {
                   // }
                   FirebaseFirestore.instance
                       .collection('match')
-                      .doc(user.uid)
+                      .doc(user?.uid)
                       .update({
                     "imgUid": snapshot.data.docs[0].get('img')[0],
                   });
@@ -119,7 +118,7 @@ class _UploadImage_PageState extends State<UploadImage_Page> {
                             onPressed: () {
                               FirebaseFirestore.instance
                                   .collection('user')
-                                  .doc(user.uid)
+                                  .doc(user?.uid)
                                   .update({
                                 "img": FieldValue.arrayRemove([
                                   snapshot.data.docs[0]

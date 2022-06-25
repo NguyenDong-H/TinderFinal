@@ -8,7 +8,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class Favorite_Page extends StatefulWidget {
-  const Favorite_Page({Key key}) : super(key: key);
+  const Favorite_Page({Key? key}) : super(key: key);
 
   @override
   State<Favorite_Page> createState() => _Favorite_PageState();
@@ -875,11 +875,11 @@ class _Favorite_PageState extends State<Favorite_Page> {
                     context,
                     MaterialPageRoute(builder: (context) => UploadImage_Page()),
                   );
-                  User user = FirebaseAuth.instance.currentUser;
+                  User? user = FirebaseAuth.instance.currentUser;
 
                   await FirebaseFirestore.instance
                       .collection('user')
-                      .doc(user.uid)
+                      .doc(user?.uid)
                       .update({
                     'favorite': strings,
                   });

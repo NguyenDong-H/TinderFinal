@@ -1,5 +1,3 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -7,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import '../network/foryou_network.dart';
 
 class ForyouCategory extends StatelessWidget {
-  const ForyouCategory({Key key}) : super(key: key);
+  const ForyouCategory({Key ? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

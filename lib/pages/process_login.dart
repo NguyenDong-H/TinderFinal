@@ -29,7 +29,7 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
       final LoginResult = await FacebookAuth.instance.login();
       final userData = await FacebookAuth.instance.getUserData();
       final facebookAuthCredential =
-          FacebookAuthProvider.credential(LoginResult.accessToken.token);
+          FacebookAuthProvider.credential(LoginResult.accessToken!.token);
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 
       final QuerySnapshot result = await FirebaseFirestore.instance
@@ -48,9 +48,9 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
           MaterialPageRoute(builder: (context) => RootApp()),
         );
       } else {
-        User user = FirebaseAuth.instance.currentUser;
+        User? user = FirebaseAuth.instance.currentUser;
 
-        await FirebaseFirestore.instance.collection('user').doc(user.uid).set({
+        await FirebaseFirestore.instance.collection('user').doc(user?.uid).set({
           'email': userData['email'],
           'img': FieldValue.arrayUnion([userData['picture']['data']['url']]),
           'name': userData['name'],
@@ -60,14 +60,17 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
           'school': '',
           'ListUidMatch': FieldValue.arrayUnion([]),
           'sexChoose': '',
-          'uid': user.uid,
+          'uid': user?.uid,
           'SexOrientation': 'https://www.w3schools.com/w3images/avatar2.png',
         });
 
-        await FirebaseFirestore.instance.collection('match').doc(user.uid).set({
+        await FirebaseFirestore.instance
+            .collection('match')
+            .doc(user?.uid)
+            .set({
           'name': userData['name'],
           'active': true,
-          'uid': user.uid,
+          'uid': user?.uid,
           'imgUid': userData['picture']['data']['url'],
           'ListUidMatch': FieldValue.arrayUnion([]),
         });
@@ -106,7 +109,7 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
         idToken: googleSignInAuthentication.idToken,
       );
       await FirebaseAuth.instance.signInWithCredential(credential);
-      User user = FirebaseAuth.instance.currentUser;
+      User? user = FirebaseAuth.instance.currentUser;
 
       final QuerySnapshot result = await FirebaseFirestore.instance
           .collection('user')
@@ -123,7 +126,7 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
           MaterialPageRoute(builder: (context) => RootApp()),
         );
       } else {
-        await FirebaseFirestore.instance.collection('user').doc(user.uid).set({
+        await FirebaseFirestore.instance.collection('user').doc(user?.uid).set({
           'email': googleSignInAccount.email,
           'img': FieldValue.arrayUnion([googleSignInAccount.photoUrl]),
           'name': googleSignInAccount.displayName,
@@ -133,13 +136,16 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
           'school': '',
           'ListUidMatch': FieldValue.arrayUnion([]),
           'sexChoose': '',
-          'uid': user.uid,
+          'uid': user?.uid,
           'SexOrientation': 'https://www.w3schools.com/w3images/avatar2.png',
         });
-        await FirebaseFirestore.instance.collection('match').doc(user.uid).set({
+        await FirebaseFirestore.instance
+            .collection('match')
+            .doc(user?.uid)
+            .set({
           'name': googleSignInAccount.displayName,
           'active': true,
-          'uid': user.uid,
+          'uid': user?.uid,
           'imgUid': googleSignInAccount.photoUrl,
           'ListUidMatch': FieldValue.arrayUnion([]),
         });

@@ -112,16 +112,16 @@ class _NamePageState extends State<NamePage> {
               context,
               MaterialPageRoute(builder: (context) => BirthdayPage()),
             );
-            User user = FirebaseAuth.instance.currentUser;
+            User? user = FirebaseAuth.instance.currentUser;
             await FirebaseFirestore.instance
                 .collection('user')
-                .doc(user.uid)
+                .doc(user?.uid)
                 .update({
               'name': _name.text,
             });
             await FirebaseFirestore.instance
                 .collection('match')
-                .doc(user.uid)
+                .doc(user?.uid)
                 .update({
               'name': _name.text,
             });

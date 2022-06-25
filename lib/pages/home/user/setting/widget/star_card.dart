@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class StarCard extends StatelessWidget {
   const StarCard({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

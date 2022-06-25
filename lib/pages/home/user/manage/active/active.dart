@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 //
 class Active extends StatefulWidget {
-  const Active({Key key}) : super(key: key);
+  const Active({Key ? key}) : super(key: key);
 
   @override
   State<Active> createState() => _ActiveState();

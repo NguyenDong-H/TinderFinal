@@ -1,5 +1,3 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:finalproject/pages/category/discovery.dart';
 import 'package:finalproject/pages/category/foryou.dart';
 
@@ -9,7 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'dart:ui';
 
 class DiscoveryScreen extends StatefulWidget {
-  const DiscoveryScreen({Key key}) : super(key: key);
+  const DiscoveryScreen({Key ? key}) : super(key: key);
 
   @override
   State<DiscoveryScreen> createState() => _DiscoveryScreenState();

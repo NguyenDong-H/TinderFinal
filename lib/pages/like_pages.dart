@@ -7,14 +7,14 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class LikePage extends StatefulWidget {
-  const LikePage({Key key}) : super(key: key);
+  const LikePage({Key? key}) : super(key: key);
 
   @override
   State<LikePage> createState() => _LikePageState();
 }
 
 class _LikePageState extends State<LikePage> {
-  User user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _LikePageState extends State<LikePage> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('match')
-            .where('ListUidMatch', arrayContains: user.uid)
+            .where('ListUidMatch', arrayContains: user?.uid)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
@@ -73,7 +73,7 @@ class _LikePageState extends State<LikePage> {
                   spacing: 5,
                   runSpacing: 5,
                   children: List.generate(
-                    snapshot.data.docs.length,
+                    snapshot.data!.docs.length,
                     (index) {
                       return Container(
                         width: (size.width - 15) / 2,
@@ -87,7 +87,7 @@ class _LikePageState extends State<LikePage> {
                                   borderRadius: BorderRadius.circular(10),
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                        snapshot.data.docs[index]['imgUid'],
+                                        snapshot.data?.docs[index]['imgUid'],
                                       ),
                                       fit: BoxFit.cover)),
                             ),
@@ -107,7 +107,7 @@ class _LikePageState extends State<LikePage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  snapshot.data.docs[index]['active']
+                                  snapshot.data?.docs[index]['active']
                                       ? Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Row(

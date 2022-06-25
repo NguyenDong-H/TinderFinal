@@ -1,4 +1,3 @@
-//Done
 import 'package:finalproject/pages/home/user/shield/page/guide_screen.dart';
 import 'package:finalproject/pages/home/user/shield/page/resources_screen.dart';
 import 'package:finalproject/pages/home/user/shield/page/tools_screen.dart';
@@ -6,7 +5,7 @@ import 'package:finalproject/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class SafeCenterScreen extends StatefulWidget {
-  const SafeCenterScreen({Key key}) : super(key: key);
+  const SafeCenterScreen({Key? key}) : super(key: key);
 
   @override
   State<SafeCenterScreen> createState() => _SafeCenterScreenState();
@@ -63,11 +62,8 @@ class _SafeCenterScreenState extends State<SafeCenterScreen> {
             ],
           ),
         ),
-        body: TabBarView(children: [
-          const GuideScreen(),
-          const ToolsScreen(),
-          const ResourcesScreen()
-        ]),
+        body: TabBarView(
+            children: [GuideScreen(), ToolsScreen(), ResourcesScreen()]),
       ),
     );
   }

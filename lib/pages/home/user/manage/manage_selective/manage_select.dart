@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ManageSelect extends StatefulWidget {
-  const ManageSelect({Key key}) : super(key: key);
+  const ManageSelect({Key ? key}) : super(key: key);
 
   @override
   State<ManageSelect> createState() => _ManageSelectState();

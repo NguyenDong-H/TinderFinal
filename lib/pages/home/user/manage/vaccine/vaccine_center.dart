@@ -1,10 +1,8 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class VaccineCenter extends StatefulWidget {
-  const VaccineCenter({Key key}) : super(key: key);
+  const VaccineCenter({Key ? key}) : super(key: key);
 
   @override
   State<VaccineCenter> createState() => _VaccineCenterState();

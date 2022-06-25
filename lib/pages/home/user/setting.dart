@@ -31,7 +31,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Setting extends StatefulWidget {
-  const Setting({Key key}) : super(key: key);
+  const Setting({Key ? key}) : super(key: key);
 
   @override
   State<Setting> createState() => _SettingState();

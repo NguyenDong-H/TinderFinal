@@ -21,7 +21,7 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  User user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
 
   // final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
@@ -35,7 +35,7 @@ class _UserPageState extends State<UserPage> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('user')
-            .where('uid', isEqualTo: user.uid)
+            .where('uid', isEqualTo: user?.uid)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
@@ -43,7 +43,7 @@ class _UserPageState extends State<UserPage> {
               child: CircularProgressIndicator(),
             );
           }
-          for (var index = 0; index < snapshot.data.docs.length; index++) {
+          for (var index = 0; index < snapshot.data!.docs.length; index++) {
             return ClipPath(
               clipper: OvalBottomBorderClipper(),
               child: Container(
@@ -70,14 +70,14 @@ class _UserPageState extends State<UserPage> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: NetworkImage(
-                                    snapshot.data.docs[index]['img'][0]),
+                                    snapshot.data?.docs[index]['img'][0]),
                                 fit: BoxFit.cover)),
                       ),
                       SizedBox(
                         height: 15,
                       ),
                       Text(
-                        snapshot.data.docs[index]['name'],
+                        snapshot.data?.docs[index]['name'],
                         // snapshot.data.docs[index]['birthday'],
                         style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.w600),
@@ -268,6 +268,7 @@ class _UserPageState extends State<UserPage> {
               ),
             );
           }
+          return Text('');
         },
       ),
     );

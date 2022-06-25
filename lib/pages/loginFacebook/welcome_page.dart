@@ -9,7 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key key}) : super(key: key);
+  const WelcomePage({Key ? key}) : super(key: key);
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();

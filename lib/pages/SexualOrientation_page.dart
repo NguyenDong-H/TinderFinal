@@ -286,10 +286,10 @@ class _SexualOrientationState extends State<SexualOrientation> {
               context,
               MaterialPageRoute(builder: (context) => ChoosePage()),
             );
-            User user = FirebaseAuth.instance.currentUser;
+            User? user = FirebaseAuth.instance.currentUser;
             await FirebaseFirestore.instance
                 .collection('user')
-                .doc(user.uid)
+                .doc(user?.uid)
                 .update({
               'SexOrientation': strings,
             });

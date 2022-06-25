@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class EveryBody extends StatelessWidget {
   const EveryBody({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

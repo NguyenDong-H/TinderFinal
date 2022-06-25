@@ -1,5 +1,3 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:finalproject/pages/editCity.dart';
 import 'package:finalproject/pages/edit_gender.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,7 +9,7 @@ import '../../../editSex.dart';
 import '../../../editfavorite.dart';
 
 class Edit extends StatefulWidget {
-  const Edit({Key key}) : super(key: key);
+  const Edit({Key? key}) : super(key: key);
   @override
   State<Edit> createState() => _EditState();
 }
@@ -50,6 +48,7 @@ class _EditState extends State<Edit> {
                           Icons.add_circle,
                           color: Colors.pinkAccent,
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -74,6 +73,7 @@ class _EditState extends State<Edit> {
                           Icons.add_circle,
                           color: Colors.pinkAccent,
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -98,6 +98,7 @@ class _EditState extends State<Edit> {
                           Icons.add_circle,
                           color: Colors.pinkAccent,
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -128,6 +129,7 @@ class _EditState extends State<Edit> {
                           Icons.add_circle,
                           color: Colors.pinkAccent,
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -152,6 +154,7 @@ class _EditState extends State<Edit> {
                           Icons.add_circle,
                           color: Colors.pinkAccent,
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -176,6 +179,7 @@ class _EditState extends State<Edit> {
                           Icons.add_circle,
                           color: Colors.pinkAccent,
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -206,6 +210,7 @@ class _EditState extends State<Edit> {
                           Icons.add_circle,
                           color: Colors.pinkAccent,
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -230,6 +235,7 @@ class _EditState extends State<Edit> {
                           Icons.add_circle,
                           color: Colors.pinkAccent,
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -254,6 +260,7 @@ class _EditState extends State<Edit> {
                           Icons.add_circle,
                           color: Colors.pinkAccent,
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -539,6 +546,7 @@ class _EditState extends State<Edit> {
                           color: Colors.grey,
                         ),
                       ),
+                      child: Text('..'),
                     ),
                   ],
                 ),
@@ -583,6 +591,7 @@ class _EditState extends State<Edit> {
                           color: Colors.grey,
                         ),
                       ),
+                      child: Text('..'),
                     ),
                   ],
                 ),

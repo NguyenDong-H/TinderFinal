@@ -1,9 +1,8 @@
-//Done
 import 'package:flutter/material.dart';
 
 class Disconect extends StatelessWidget {
   const Disconect({
-    Key key,
+    Key ? key,
   }) : super(key: key);
 
   @override

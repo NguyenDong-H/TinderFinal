@@ -11,7 +11,7 @@ import 'package:path/path.dart' as Path;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddImage extends StatefulWidget {
-  const AddImage({Key key}) : super(key: key);
+  const AddImage({Key? key}) : super(key: key);
 
   @override
   State<AddImage> createState() => _AddImageState();
@@ -20,9 +20,9 @@ class AddImage extends StatefulWidget {
 class _AddImageState extends State<AddImage> {
   bool uploading = false;
   double val = 0;
-  CollectionReference imgRef;
-  firebase_storage.Reference ref;
-  User user = FirebaseAuth.instance.currentUser;
+  CollectionReference? imgRef;
+  firebase_storage.Reference? ref;
+  User? user = FirebaseAuth.instance.currentUser;
 
   List<File> _image = [];
   ImagePicker picker = ImagePicker();
@@ -115,9 +115,9 @@ class _AddImageState extends State<AddImage> {
   chooseImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     setState(() {
-      _image.add(File(pickedFile?.path));
+      _image.add(File(pickedFile!.path));
     });
-    if (pickedFile.path == null) retrieveLostData();
+    if (pickedFile?.path == null) retrieveLostData();
   }
 
   Future<void> retrieveLostData() async {
@@ -127,7 +127,7 @@ class _AddImageState extends State<AddImage> {
     }
     if (response.file != null) {
       setState(() {
-        _image.add(File(response.file.path));
+        _image.add(File(response.file!.path));
       });
     } else {
       print(response.file);
@@ -144,9 +144,9 @@ class _AddImageState extends State<AddImage> {
       ref = firebase_storage.FirebaseStorage.instance
           .ref()
           .child('image_user/${Path.basename(img.path)}');
-      await ref.putFile(img).whenComplete(() async {
-        await ref.getDownloadURL().then((value) {
-          FirebaseFirestore.instance.collection('user').doc(user.uid).update({
+      await ref?.putFile(img).whenComplete(() async {
+        await ref?.getDownloadURL().then((value) {
+          FirebaseFirestore.instance.collection('user').doc(user?.uid).update({
             "img": FieldValue.arrayUnion([value])
           });
           i++;

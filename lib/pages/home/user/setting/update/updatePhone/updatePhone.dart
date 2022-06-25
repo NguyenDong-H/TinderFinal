@@ -1,5 +1,3 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:finalproject/pages/home/user/setting/update/updatePhone/ChangePhone.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +5,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class UpdatePhone extends StatefulWidget {
-  const UpdatePhone({Key key}) : super(key: key);
+  const UpdatePhone({Key ? key}) : super(key: key);
 
   @override
   State<UpdatePhone> createState() => _UpdatePhoneState();

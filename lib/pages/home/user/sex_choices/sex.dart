@@ -5,7 +5,7 @@ import 'package:finalproject/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class SexChoices extends StatefulWidget {
-  const SexChoices({Key key}) : super(key: key);
+  const SexChoices({Key ? key}) : super(key: key);
 
   @override
   State<SexChoices> createState() => _SexChoicesState();

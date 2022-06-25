@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AddressUpdate extends StatefulWidget {
-  const AddressUpdate({Key key}) : super(key: key);
+  const AddressUpdate({Key ? key}) : super(key: key);
 
   @override
   State<AddressUpdate> createState() => _AddressUpdateState();

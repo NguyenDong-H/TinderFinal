@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class IsActive extends StatefulWidget {
-  const IsActive({Key key}) : super(key: key);
+  const IsActive({Key? key}) : super(key: key);
 
   @override
   State<IsActive> createState() => _IsActiveState();

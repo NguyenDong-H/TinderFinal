@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class TextBox2 extends StatelessWidget {
-  const TextBox2({Key key}) : super(key: key);
+  const TextBox2({Key ? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

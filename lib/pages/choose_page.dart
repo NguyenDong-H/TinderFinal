@@ -7,7 +7,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class ChoosePage extends StatefulWidget {
-  const ChoosePage({Key key}) : super(key: key);
+  const ChoosePage({Key? key}) : super(key: key);
 
   @override
   State<ChoosePage> createState() => _ChoosePageState();
@@ -180,11 +180,11 @@ class _ChoosePageState extends State<ChoosePage> {
               context,
               MaterialPageRoute(builder: (context) => SchoolPage()),
             );
-            User user = FirebaseAuth.instance.currentUser;
+            User? user = FirebaseAuth.instance.currentUser;
 
             await FirebaseFirestore.instance
                 .collection('user')
-                .doc(user.uid)
+                .doc(user?.uid)
                 .update({
               'sexChoose': result.toString(),
             });
