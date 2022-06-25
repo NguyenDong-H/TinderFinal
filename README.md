@@ -1,14 +1,27 @@
 # finalproject
 ## Written by Nguyen Minh Quan
 
-1/ Hướng dẫn cách cấu hình lại nếu gặp lỗi
-- Lỗi flutter version bị cũ ---> Nên config khác nhau , xóa theo lỗi hướng dẫn báo trong IDE đang xài hoặc copy paste file nhtsa_model.dart đã cung cấp vào
--> Truy cập đường link C:\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src ( nơi đặt sdk của flutter )
----> Tìm file nhtsa_model.dart 
+1/ Lỗi do sdk version cũ dẫn đến một số thư viện bị xung đột 
 
-- Copy phần code đã đc sửa từ file nhtsa_model.dart được cung cấp khi clone project
----> và paste vào file nhtsa_model.dart bị báo lỗi
+-> Đầu tiên nên update lên version mới nhất hiện tại bản stable
 
+Nếu gặp lỗi thì hãy làm theo 2 hướng dẫn sau:
+a) Hướng dẫn cách cấu hình lại nếu gặp lỗi ở file nhtsa_model.dart
+- Lỗi flutter version bị cũ ---> Nên config khác nhau , xóa theo lỗi hướng dẫn báo trong IDE đang xài hoặc copy paste file nhtsa_model.dart đã cung cấp vào.
+-> Truy cập đường dẫn C:\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src ( nơi đặt sdk của flutter )
+---> Truy cập vào file nhtsa_model.dart 
+
+- Copy phần code đã sửa từ file nhtsa_model.dart được cung cấp khi clone project
+---> và paste vào file nhtsa_model.dart bị báo lỗi trên máy
+
+b) Hướng dẫn cách cấu hình lại nếu gặp lỗi ở file vin_decobar_base.dart
+- Lỗi flutter version bị cũ ---> Nên config khác nhau , xóa theo lỗi hướng dẫn báo trong IDE đang xài hoặc copy paste file vin_decobar_base.dart đã cung cấp 
+-> Try cập vào đường dẫn C:\flutter_sdk\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src ( nơi đặt sdk của flutter )
+---> Truy cập vào file vin_decobar_base.dart 
+- Copy phần code đã sửa từ file vin_decobar_base được cung cấp khi clone project 
+---> và paste vào file vin_decobar_base.dart bị báo lỗi trên máy
+
+-> Truy cập đường link 
 2/ Cấu hình developer facebook
 
 -> Cài đặt thư viện OpenSSL -> Chỉnh sửa path 
