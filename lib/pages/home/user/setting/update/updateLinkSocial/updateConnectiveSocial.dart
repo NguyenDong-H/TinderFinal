@@ -1,5 +1,3 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/theme/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,7 +8,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class ConnectSocialAcount extends StatefulWidget {
-  const ConnectSocialAcount({Key key}) : super(key: key);
+  const ConnectSocialAcount({Key? key}) : super(key: key);
 
   @override
   State<ConnectSocialAcount> createState() => _ConnectSocialAcountState();
@@ -30,7 +28,7 @@ class _ConnectSocialAcountState extends State<ConnectSocialAcount> {
       final LoginResult = await FacebookAuth.instance.login();
       final userData = await FacebookAuth.instance.getUserData();
       final facebookAuthCredential =
-          FacebookAuthProvider.credential(LoginResult.accessToken.token);
+          FacebookAuthProvider.credential(LoginResult.accessToken!.token);
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 
       final QuerySnapshot result = await FirebaseFirestore.instance

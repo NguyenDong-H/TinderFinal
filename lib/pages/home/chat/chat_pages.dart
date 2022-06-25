@@ -1,4 +1,3 @@
-//Done
 import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,14 +10,14 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({Key key}) : super(key: key);
+  const ChatPage({Key ? key}) : super(key: key);
 
   @override
   State<ChatPage> createState() => _ChatPageState();
 }
 
 class _ChatPageState extends State<ChatPage> {
-  User user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
 
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -28,7 +27,7 @@ class _ChatPageState extends State<ChatPage> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('match')
-            .where('ListUidMatch', arrayContains: user.uid)
+            .where('ListUidMatch', arrayContains: user?.uid)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
@@ -121,14 +120,14 @@ class _ChatPageState extends State<ChatPage> {
                           padding: const EdgeInsets.only(right: 200),
                           child: Row(
                             children: List.generate(
-                              snapshot.data.docs.length,
+                              snapshot.data!.docs.length,
                               (index) {
                                 return StreamBuilder(
                                   stream: FirebaseFirestore.instance
                                       .collection('match')
                                       .where(
                                         'ListUidMatch',
-                                        arrayContains: snapshot.data.docs[index]
+                                        arrayContains: snapshot.data!.docs[index]
                                             .get('uid'),
                                       )
                                       .snapshots(),
@@ -140,10 +139,10 @@ class _ChatPageState extends State<ChatPage> {
                                       );
                                     }
                                     // int sum = snapshot2.data.docs.length + 1;
-                                    if (snapshot2.data.docs.length == 1) {
+                                    if (snapshot2.data?.docs.length == 1) {
                                       return Row(
                                         children: List.generate(
-                                          snapshot2.data.docs.length,
+                                          snapshot2.data!.docs.length,
                                           (index2) {
                                             return Padding(
                                               padding: const EdgeInsets.only(
@@ -166,7 +165,7 @@ class _ChatPageState extends State<ChatPage> {
                                                                         DetailChat(
                                                                   uid: snapshot
                                                                       .data
-                                                                      .docs[
+                                                                      ?.docs[
                                                                           index]
                                                                       .get(
                                                                           'uid'),
@@ -189,7 +188,7 @@ class _ChatPageState extends State<ChatPage> {
                                                                     NetworkImage(
                                                                   snapshot
                                                                       .data
-                                                                      .docs[
+                                                                      ?.docs[
                                                                           index]
                                                                       .get(
                                                                           'imgUid'),
@@ -211,7 +210,7 @@ class _ChatPageState extends State<ChatPage> {
                                                     child: Align(
                                                       child: Text(
                                                         snapshot
-                                                            .data.docs[index]
+                                                            .data?.docs[index]
                                                             .get('name'),
                                                         overflow: TextOverflow
                                                             .ellipsis,

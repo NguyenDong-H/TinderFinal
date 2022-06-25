@@ -9,7 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class UploadImage_Page extends StatefulWidget {
-  const UploadImage_Page({Key key}) : super(key: key);
+  const UploadImage_Page({Key? key}) : super(key: key);
   @override
   State<UploadImage_Page> createState() => _UploadImage_PageState();
 }
@@ -17,7 +17,7 @@ class UploadImage_Page extends StatefulWidget {
 class _UploadImage_PageState extends State<UploadImage_Page> {
   bool tmp = false;
 
-  User user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +53,9 @@ class _UploadImage_PageState extends State<UploadImage_Page> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('user')
-            .where('uid', isEqualTo: user.uid)
+            .where('uid', isEqualTo: user?.uid)
             .snapshots(),
-        builder: (context, snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           // Get docs from collection reference
 
           if (!snapshot.hasData) {
@@ -66,45 +66,24 @@ class _UploadImage_PageState extends State<UploadImage_Page> {
             return Container(
               padding: EdgeInsets.all(4),
               child: GridView.builder(
-                itemCount: snapshot.data.docs[0].get("img").length,
+                itemCount: snapshot.data?.docs[0].get("img").length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3),
                 itemBuilder: (context, index) {
-                  // List<dynamic> imglists =
-                  //     snapshot.data.docs[0].get('img');
-                  // int check = snapshot.data.docs[0].get('img').length;
-                  // if (snapshot.data.docs[0].get("img").length > 1) {
-                  //   FirebaseFirestore.instance
-                  //       .collection('user')
-                  //       .doc(user.uid)
-                  //       .update({
-                  //     "img": FieldValue.arrayRemove(
-                  //         ['https://www.w3schools.com/w3images/avatar2.png'])
-                  //   });
-                  // }
                   FirebaseFirestore.instance
                       .collection('match')
-                      .doc(user.uid)
+                      .doc(user?.uid)
                       .update({
-                    "imgUid": snapshot.data.docs[0].get('img')[0],
+                    "imgUid": snapshot.data?.docs[0].get('img')[0],
                   });
                   return Container(
-                    // color: Color.fromARGB(255, 255, 25, 75),
-                    // decoration: BoxDecoration(
-                    //   border: Border.all(
-                    //     color: Color.fromARGB(255, 255, 25, 75),
-                    //     width: 2,
-                    //   ),
-                    //   borderRadius: BorderRadius.circular(5),
-                    // ),
-
                     child: Stack(
                       children: <Widget>[
                         Center(
                           child: FadeInImage.memoryNetwork(
                             fit: BoxFit.cover,
                             placeholder: kTransparentImage,
-                            image: snapshot.data.docs[0].get('img')[index],
+                            image: snapshot.data?.docs[0].get('img')[index],
                             imageCacheHeight: 200,
                             imageCacheWidth: 160,
                           ),
@@ -119,10 +98,10 @@ class _UploadImage_PageState extends State<UploadImage_Page> {
                             onPressed: () {
                               FirebaseFirestore.instance
                                   .collection('user')
-                                  .doc(user.uid)
+                                  .doc(user?.uid)
                                   .update({
                                 "img": FieldValue.arrayRemove([
-                                  snapshot.data.docs[0]
+                                  snapshot.data?.docs[0]
                                       .get('img')[index]
                                       .toString()
                                 ])

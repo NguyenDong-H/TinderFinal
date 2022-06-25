@@ -1,9 +1,8 @@
-//Done
 import 'package:flutter/material.dart';
 
 class Conf_tools extends StatelessWidget {
   const Conf_tools({
-    Key key,
+    Key ? key,
   }) : super(key: key);
 
   @override

@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingCard2 extends StatelessWidget {
   const SettingCard2({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

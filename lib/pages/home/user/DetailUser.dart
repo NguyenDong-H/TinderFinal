@@ -8,7 +8,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:story_view/story_view.dart';
 
 class DetailUser extends StatefulWidget {
-  const DetailUser({Key key, @required this.uid}) : super(key: key);
+  const DetailUser({Key? key, required this.uid}) : super(key: key);
   final String uid;
   @override
   State<DetailUser> createState() => _DetailUserState();
@@ -16,7 +16,7 @@ class DetailUser extends StatefulWidget {
 
 class _DetailUserState extends State<DetailUser> {
   final StoryController controller = StoryController();
-  User user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
   List<String> arrayList = [];
   List<String> arrayList2 = [];
   final audioPlayer = AudioPlayer();
@@ -54,12 +54,12 @@ class _DetailUserState extends State<DetailUser> {
                     child: StoryView(
                       controller: controller,
                       storyItems: [
-                        for (var i = 0; i < snapshot.data.docs.length; i++)
+                        for (var i = 0; i < snapshot.data!.docs.length; i++)
                           for (var index = 0;
-                              index < snapshot.data.docs[i].get('img').length;
+                              index < snapshot.data?.docs[i].get('img').length;
                               index++)
                             StoryItem.inlineImage(
-                              url: snapshot.data.docs[i].get('img')[index],
+                              url: snapshot.data?.docs[i].get('img')[index],
                               controller: controller,
                             ),
                       ],
@@ -81,6 +81,7 @@ class _DetailUserState extends State<DetailUser> {
                         color: white,
                         size: 40,
                       ),
+                      onPressed: () {},
                     ),
                   ),
                   Container(
@@ -105,7 +106,7 @@ class _DetailUserState extends State<DetailUser> {
                   )
                 ],
               ),
-              for (var value = 0; value < snapshot.data.docs.length; value++)
+              for (var value = 0; value < snapshot.data!.docs.length; value++)
                 Column(
                   children: [
                     Row(
@@ -113,7 +114,7 @@ class _DetailUserState extends State<DetailUser> {
                         Container(
                           margin: EdgeInsets.only(left: 20),
                           child: Text(
-                            snapshot.data.docs[value].get('name'),
+                            snapshot.data?.docs[value].get('name'),
                             style: TextStyle(
                               fontSize: 50,
                               fontWeight: FontWeight.bold,
@@ -231,14 +232,14 @@ class _DetailUserState extends State<DetailUser> {
                             children: [
                               for (var favorite = 0;
                                   favorite <
-                                      snapshot.data.docs[value]
+                                      snapshot.data?.docs[value]
                                           .get('favorite')
                                           .length;
                                   favorite++)
                                 StreamBuilder(
                                   stream: FirebaseFirestore.instance
                                       .collection('user')
-                                      .where('uid', isEqualTo: user.uid)
+                                      .where('uid', isEqualTo: user?.uid)
                                       .snapshots(),
                                   builder: (BuildContext context,
                                       AsyncSnapshot<QuerySnapshot>
@@ -249,21 +250,21 @@ class _DetailUserState extends State<DetailUser> {
                                       );
                                     }
                                     for (var a = 0;
-                                        a < snapshotCheck.data.docs.length;
+                                        a < snapshotCheck.data!.docs.length;
                                         a++) {
                                       for (var u = 0;
                                           u <
-                                              snapshotCheck.data.docs[a]
+                                              snapshotCheck.data?.docs[a]
                                                   .get('favorite')
                                                   .length;
                                           u++) {
                                         if (arrayList.contains(snapshotCheck
-                                            .data.docs[a]
+                                            .data?.docs[a]
                                             .get('favorite')[u])) {
                                           print('Exist');
                                         } else {
                                           arrayList.add(snapshotCheck
-                                              .data.docs[a]
+                                              .data?.docs[a]
                                               .get('favorite')[u]);
                                         }
                                       }
@@ -274,7 +275,7 @@ class _DetailUserState extends State<DetailUser> {
                                       //       snapshot.data.docs[value]
                                       //           .get('favorite')[favorite]) {
                                       if (arrayList.contains(snapshot
-                                          .data.docs[value]
+                                          .data?.docs[value]
                                           .get('favorite')[favorite])) {
                                         return Container(
                                           padding: EdgeInsets.symmetric(
@@ -290,7 +291,7 @@ class _DetailUserState extends State<DetailUser> {
                                                 BorderRadius.circular(40),
                                           ),
                                           child: Text(
-                                            snapshot.data.docs[value]
+                                            snapshot.data?.docs[value]
                                                 .get('favorite')[favorite],
                                             style: TextStyle(
                                               color: Color.fromARGB(
@@ -313,12 +314,13 @@ class _DetailUserState extends State<DetailUser> {
                                                 BorderRadius.circular(40),
                                           ),
                                           child: Text(
-                                            snapshot.data.docs[value]
+                                            snapshot.data?.docs[value]
                                                 .get('favorite')[favorite],
                                           ),
                                         );
                                       }
                                     }
+                                    return Text('');
                                   },
                                 ),
                             ],
@@ -438,7 +440,7 @@ class _DetailUserState extends State<DetailUser> {
                         Container(
                           child: Text(
                             "CHIA SẺ HỒ SƠ CỦA " +
-                                snapshot.data.docs[value].get('name'),
+                                snapshot.data?.docs[value].get('name'),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: black,
@@ -460,7 +462,7 @@ class _DetailUserState extends State<DetailUser> {
                     Column(
                       children: [
                         Text(
-                          "TRÌNH BÁO " + snapshot.data.docs[value].get('name'),
+                          "TRÌNH BÁO " + snapshot.data?.docs[value].get('name'),
                         )
                       ],
                     )

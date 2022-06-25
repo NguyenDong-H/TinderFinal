@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ThunderCard extends StatelessWidget {
   const ThunderCard({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

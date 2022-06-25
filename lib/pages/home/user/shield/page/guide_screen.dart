@@ -1,4 +1,3 @@
-//Done
 import 'package:finalproject/pages/home/user/shield/widget/check_point.dart';
 import 'package:finalproject/pages/home/user/shield/widget/consensus.dart';
 import 'package:finalproject/pages/home/user/shield/widget/report.dart';
@@ -15,7 +14,7 @@ import 'package:flutter/material.dart';
 import '../widget/basic_info.dart';
 
 class GuideScreen extends StatefulWidget {
-  const GuideScreen({Key key}) : super(key: key);
+  const GuideScreen({Key ? key}) : super(key: key);
 
   @override
   State<GuideScreen> createState() => _GuideScreenState();

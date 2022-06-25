@@ -224,7 +224,7 @@ class _RegisterPageState extends State<RegisterPage> {
         verificationFailed: (FirebaseAuthException e) {
           print(e.message);
         },
-        codeSent: (String verificationId, int resendToken) {
+        codeSent: (String verificationId, int? resendToken) {
           otpVisibility = true;
           verificationID = verificationId;
           setState(() {});
@@ -244,10 +244,10 @@ class _RegisterPageState extends State<RegisterPage> {
         MaterialPageRoute(builder: (context) => EmailRegisterPage()),
       );
 
-      User user = FirebaseAuth.instance.currentUser;
-      await FirebaseFirestore.instance.collection('user').doc(user.uid).set({
+      User? user = FirebaseAuth.instance.currentUser;
+      await FirebaseFirestore.instance.collection('user').doc(user?.uid).set({
         'phone': phoneNumber.text,
-        'uid': user.uid,
+        'uid': user?.uid,
         'birthday': '',
         'email': '',
         'favorite': '',
@@ -260,8 +260,8 @@ class _RegisterPageState extends State<RegisterPage> {
         'sexChoose': '',
         'SexOrientation': 'https://www.w3schools.com/w3images/avatar2.png',
       });
-      await FirebaseFirestore.instance.collection('match').doc(user.uid).set({
-        'uid': user.uid,
+      await FirebaseFirestore.instance.collection('match').doc(user?.uid).set({
+        'uid': user?.uid,
         'ListUidMatch': FieldValue.arrayUnion([]),
         'name': '',
         'active': true,

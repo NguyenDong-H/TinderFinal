@@ -7,14 +7,14 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class LikePage extends StatefulWidget {
-  const LikePage({Key key}) : super(key: key);
+  const LikePage({Key? key}) : super(key: key);
 
   @override
   State<LikePage> createState() => _LikePageState();
 }
 
 class _LikePageState extends State<LikePage> {
-  User user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _LikePageState extends State<LikePage> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('match')
-            .where('ListUidMatch', arrayContains: user.uid)
+            .where('ListUidMatch', arrayContains: user?.uid)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
@@ -73,7 +73,7 @@ class _LikePageState extends State<LikePage> {
                   spacing: 5,
                   runSpacing: 5,
                   children: List.generate(
-                    snapshot.data.docs.length,
+                    snapshot.data!.docs.length,
                     (index) {
                       return Container(
                         width: (size.width - 15) / 2,
@@ -84,7 +84,7 @@ class _LikePageState extends State<LikePage> {
                               stream: FirebaseFirestore.instance
                                   .collection('user')
                                   .where('uid',
-                                      isEqualTo: snapshot.data.docs[index]
+                                      isEqualTo: snapshot.data?.docs[index]
                                           ['uid'])
                                   .snapshots(),
                               builder: (BuildContext context,
@@ -95,9 +95,9 @@ class _LikePageState extends State<LikePage> {
                                   );
                                 }
                                 for (var i = 0;
-                                    i < snapshot.data.docs.length;
+                                    i < snapshot.data!.docs.length;
                                     i++) {
-                                  if (snapshotUser.data.docs[i]
+                                  if (snapshotUser.data?.docs[i]
                                           .get('img')
                                           .length >
                                       0) {
@@ -109,7 +109,7 @@ class _LikePageState extends State<LikePage> {
                                               BorderRadius.circular(10),
                                           image: DecorationImage(
                                               image: NetworkImage(
-                                                snapshotUser.data.docs[i]
+                                                snapshotUser.data?.docs[i]
                                                     .get('img')[0],
                                               ),
                                               fit: BoxFit.cover)),
@@ -120,6 +120,7 @@ class _LikePageState extends State<LikePage> {
                                     );
                                   }
                                 }
+                                return Text('');
                               },
                             ),
                             Container(

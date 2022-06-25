@@ -10,7 +10,7 @@ import 'favorite_page.dart';
 import 'loginPhone/imgRegister/upload_img.dart';
 
 class EditFavotire extends StatefulWidget {
-  const EditFavotire({Key key}) : super(key: key);
+  const EditFavotire({Key? key}) : super(key: key);
 
   @override
   State<EditFavotire> createState() => _EditFavotireState();
@@ -850,11 +850,11 @@ class _EditFavotireState extends State<EditFavotire> {
                       MaterialPageRoute(
                           builder: (context) => UploadImage_Page()),
                     );
-                    User user = FirebaseAuth.instance.currentUser;
+                    User? user = FirebaseAuth.instance.currentUser;
 
                     await FirebaseFirestore.instance
                         .collection('user')
-                        .doc(user.uid)
+                        .doc(user?.uid)
                         .update({
                       'favorite': strings,
                     });

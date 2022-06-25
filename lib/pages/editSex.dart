@@ -1,12 +1,10 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class EditSex extends StatefulWidget {
-  const EditSex({Key key}) : super(key: key);
+  const EditSex({Key? key}) : super(key: key);
 
   @override
   State<EditSex> createState() => _EditSexState();
@@ -64,6 +62,7 @@ class _EditSexState extends State<EditSex> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(
@@ -72,6 +71,7 @@ class _EditSexState extends State<EditSex> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(
@@ -80,6 +80,7 @@ class _EditSexState extends State<EditSex> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(
@@ -88,6 +89,7 @@ class _EditSexState extends State<EditSex> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(
@@ -96,6 +98,7 @@ class _EditSexState extends State<EditSex> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(
@@ -104,6 +107,7 @@ class _EditSexState extends State<EditSex> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(
@@ -112,6 +116,7 @@ class _EditSexState extends State<EditSex> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(
@@ -120,6 +125,7 @@ class _EditSexState extends State<EditSex> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(
@@ -128,6 +134,7 @@ class _EditSexState extends State<EditSex> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                   ],
                 ),

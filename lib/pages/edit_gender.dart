@@ -6,7 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class EditGender extends StatefulWidget {
-  const EditGender({Key key}) : super(key: key);
+  const EditGender({Key? key}) : super(key: key);
 
   @override
   State<EditGender> createState() => _EditGenderState();
@@ -60,6 +60,7 @@ class _EditGenderState extends State<EditGender> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(
@@ -68,6 +69,7 @@ class _EditGenderState extends State<EditGender> {
                           color: Colors.black,
                         ),
                       ),
+                      child: Text(''),
                     ),
                     CupertinoFormRow(
                       prefix: Text(

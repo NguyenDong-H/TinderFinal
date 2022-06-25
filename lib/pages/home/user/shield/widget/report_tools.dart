@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class Baocao extends StatelessWidget {
   const Baocao({
-    Key key,
+    Key ? key,
   }) : super(key: key);
 
   @override

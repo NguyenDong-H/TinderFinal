@@ -11,7 +11,7 @@ import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/widgets/story_view.dart';
 
 class MatchPage extends StatefulWidget {
-  const MatchPage({Key key, @required this.uidCheck}) : super(key: key);
+  const MatchPage({Key? key, required this.uidCheck}) : super(key: key);
   final String uidCheck;
 
   @override
@@ -39,7 +39,7 @@ class _MatchPageState extends State<MatchPage> {
               );
             }
             return ListView.builder(
-              itemCount: snapshot.data.docs.length,
+              itemCount: snapshot.data?.docs.length,
               itemBuilder: (context, index) {
                 return Stack(
                   children: [
@@ -47,7 +47,7 @@ class _MatchPageState extends State<MatchPage> {
                       height: size.height,
                       width: size.width,
                       child: Image.network(
-                        snapshot.data.docs[index].get('img')[0],
+                        snapshot.data?.docs[index].get('img')[0],
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -119,19 +119,19 @@ class _MatchPageState extends State<MatchPage> {
                                     margin: EdgeInsets.only(right: 15),
                                     child: InkWell(
                                       onTap: () async {
-                                        User user =
+                                        User? user =
                                             FirebaseAuth.instance.currentUser;
                                         await FirebaseFirestore.instance
                                             .collection('chat')
                                             .add(
                                           {
-                                            'uidSender': user.uid,
+                                            'uidSender': user?.uid,
                                             'content': _value.text,
                                             'createAt': Timestamp.now(),
                                             'idChatroom':
                                                 "\$#@!#!@#!@#@!#!@!@%",
                                             'uidRevicer': snapshot
-                                                .data.docs[index]
+                                                .data?.docs[index]
                                                 .get('uid')
                                           },
                                         );
@@ -141,7 +141,7 @@ class _MatchPageState extends State<MatchPage> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => DetailChat(
-                                              uid: snapshot.data.docs[index]
+                                              uid: snapshot.data?.docs[index]
                                                   .get('uid'),
                                               idChatRoom:
                                                   "\$#@!#!@#!@#@!#!@!@%",

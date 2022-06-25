@@ -14,17 +14,17 @@ class Users extends Equatable {
   String sexChoose;
   String SexOrientation;
   Users(
-      {this.birthday,
-      this.createAt,
-      this.email,
-      this.favorite,
-      this.gender,
-      this.img,
-      this.name,
-      this.phone,
-      this.school,
-      this.sexChoose,
-      this.SexOrientation});
+      {required this.birthday,
+      required this.createAt,
+      required this.email,
+      required this.favorite,
+      required this.gender,
+      required this.img,
+      required this.name,
+      required this.phone,
+      required this.school,
+      required this.sexChoose,
+      required this.SexOrientation});
 
   Map<String, dynamic> toJson() => {
         'birthday': birthday,

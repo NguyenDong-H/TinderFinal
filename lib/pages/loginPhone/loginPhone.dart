@@ -11,7 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class LoginPhone extends StatefulWidget {
-  const LoginPhone({Key key}) : super(key: key);
+  const LoginPhone({Key? key}) : super(key: key);
 
   @override
   State<LoginPhone> createState() => _LoginPhoneState();
@@ -226,7 +226,7 @@ class _LoginPhoneState extends State<LoginPhone> {
         verificationFailed: (FirebaseAuthException e) {
           print(e.message);
         },
-        codeSent: (String verificationId, int resendToken) {
+        codeSent: (String verificationId, int? resendToken) {
           otpVisibility = true;
           verificationID = verificationId;
           setState(() {});

@@ -1,10 +1,10 @@
-//By Nguyễn Hiểu Đông
+import 'package:flutter/cupertino.dart';
 
 class DiscoveryModel {
-  String title;
-  String image;
-  String subtitle;
-  String id;
+  String? title;
+  String? image;
+  String? subtitle;
+  String? id;
 
   DiscoveryModel({this.title, this.image, this.subtitle, this.id});
 

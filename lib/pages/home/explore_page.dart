@@ -16,7 +16,7 @@ import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:intl/intl.dart';
 
 class ExplorePage extends StatefulWidget {
-  const ExplorePage({Key key}) : super(key: key);
+  const ExplorePage({Key? key}) : super(key: key);
 
   @override
   State<ExplorePage> createState() => _ExplorePageState();
@@ -25,20 +25,20 @@ class ExplorePage extends StatefulWidget {
 class _ExplorePageState extends State<ExplorePage> {
   // List itemsTemp = [];
   // int itemLength = 0;
-  List a;
-  String sexChooseAuth;
+  List? a;
+  String? sexChooseAuth;
   List<String> tmp = [];
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    User user = FirebaseAuth.instance.currentUser;
+    User? user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('user')
-            .where('uid', isEqualTo: user.uid)
+            .where('uid', isEqualTo: user?.uid)
             .snapshots(),
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot> snapshotListUid) {
@@ -49,22 +49,22 @@ class _ExplorePageState extends State<ExplorePage> {
             );
           }
 
-          for (var i = 0; i < snapshotListUid.data.docs.length; i++) {
-            a = snapshotListUid.data.docs[i].get('ListUidMatch');
-            sexChooseAuth = snapshotListUid.data.docs[i].get('sexChoose');
+          for (var i = 0; i < snapshotListUid.data!.docs.length; i++) {
+            a = snapshotListUid.data?.docs[i].get('ListUidMatch');
+            sexChooseAuth = snapshotListUid.data?.docs[i].get('sexChoose');
           }
-          if (a.length > 0) {
-            for (var y = 0; y < a.length; y++) {
-              if (tmp.contains(a[y])) {
+          if (a!.length > 0) {
+            for (var y = 0; y < a!.length; y++) {
+              if (tmp.contains(a![y])) {
                 print("exit");
               } else {
-                tmp.add(a[y].toString());
+                tmp.add(a![y].toString());
               }
             }
-            if (tmp.contains(user.uid)) {
+            if (tmp.contains(user?.uid)) {
               print("exit");
             } else {
-              tmp.add(user.uid.toString());
+              tmp.add(user!.uid.toString());
             }
             return StreamBuilder(
               stream: FirebaseFirestore.instance
@@ -83,9 +83,9 @@ class _ExplorePageState extends State<ExplorePage> {
                   );
                 }
 
-                if (snapshot.data.docs.length > 0) {
+                if (snapshot.data!.docs.length > 0) {
                   for (var index = 0;
-                      index < snapshot.data.docs.length;
+                      index < snapshot.data!.docs.length;
                       index++) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 5),
@@ -113,7 +113,9 @@ class _ExplorePageState extends State<ExplorePage> {
                               borderRadius: BorderRadius.circular(10),
                               child: Stack(
                                 children: [
-                                  snapshot.data.docs[index].get('img').length !=
+                                  snapshot.data?.docs[index]
+                                              .get('img')
+                                              .length !=
                                           0
                                       ? Container(
                                           width: size.width,
@@ -121,7 +123,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
                                               image: NetworkImage(snapshot
-                                                  .data.docs[index]
+                                                  .data?.docs[index]
                                                   .get('img')[0]),
                                               fit: BoxFit.cover,
                                             ),
@@ -159,7 +161,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                       children: [
                                                         Text(
                                                           snapshot
-                                                              .data.docs[index]
+                                                              .data?.docs[index]
                                                               .get('name'),
                                                           style: TextStyle(
                                                             fontSize: 28,
@@ -205,7 +207,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                     Row(
                                                       children: List.generate(
                                                         snapshot
-                                                            .data.docs[index]
+                                                            .data?.docs[index]
                                                             .get('favorite')
                                                             .length,
                                                         (indexlikes) {
@@ -243,7 +245,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                                   ),
                                                                   child: Text(
                                                                     snapshot
-                                                                        .data
+                                                                        .data!
                                                                         .docs[
                                                                             index]
                                                                         .get(
@@ -285,7 +287,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                                   ),
                                                                   child: Text(
                                                                     snapshot
-                                                                        .data
+                                                                        .data!
                                                                         .docs[
                                                                             index]
                                                                         .get(
@@ -323,7 +325,8 @@ class _ExplorePageState extends State<ExplorePage> {
                                                             builder:
                                                                 (context) =>
                                                                     DetailUser(
-                                                              uid: snapshot.data
+                                                              uid: snapshot
+                                                                  .data!
                                                                   .docs[index]
                                                                   .get('uid'),
                                                             ),
@@ -374,7 +377,7 @@ class _ExplorePageState extends State<ExplorePage> {
                               ),
                             ),
                           ),
-                          totalNum: snapshot.data.docs.length,
+                          totalNum: snapshot.data?.docs.length,
                           swipeCompleteCallback:
                               (CardSwipeOrientation orientation,
                                   int index) async {
@@ -387,9 +390,9 @@ class _ExplorePageState extends State<ExplorePage> {
                                 .where(
                                   'uid',
                                   isEqualTo:
-                                      snapshot.data.docs[index].get('uid'),
+                                      snapshot.data?.docs[index].get('uid'),
                                 )
-                                .where('ListUidMatch', arrayContains: user.uid)
+                                .where('ListUidMatch', arrayContains: user?.uid)
                                 .limit(1)
                                 .get();
                             final List<DocumentSnapshot> documents =
@@ -399,34 +402,34 @@ class _ExplorePageState extends State<ExplorePage> {
                                   "CardSwipeOrientation.RIGHT")) {
                                 FirebaseFirestore.instance
                                     .collection('match')
-                                    .doc(user.uid)
+                                    .doc(user?.uid)
                                     .update({
                                   "ListUidMatch": FieldValue.arrayUnion(
-                                      [snapshot.data.docs[index].get('uid')]),
+                                      [snapshot.data?.docs[index].get('uid')]),
                                   "time": Timestamp.now(),
                                 });
                                 FirebaseFirestore.instance
                                     .collection('match')
-                                    .doc(snapshot.data.docs[index].get('uid'))
+                                    .doc(snapshot.data?.docs[index].get('uid'))
                                     .update({
                                   "ListUidMatch":
-                                      FieldValue.arrayUnion([user.uid]),
+                                      FieldValue.arrayUnion([user?.uid]),
                                   "time": Timestamp.now(),
                                 });
 
                                 FirebaseFirestore.instance
                                     .collection('user')
-                                    .doc(user.uid)
+                                    .doc(user?.uid)
                                     .update({
                                   "ListUidMatch": FieldValue.arrayUnion(
-                                      [snapshot.data.docs[index].get('uid')]),
+                                      [snapshot.data?.docs[index].get('uid')]),
                                 });
 
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) => MatchPage(
                                       uidCheck:
-                                          snapshot.data.docs[index].get('uid'),
+                                          snapshot.data?.docs[index].get('uid'),
                                     ),
                                   ),
                                 );
@@ -438,10 +441,10 @@ class _ExplorePageState extends State<ExplorePage> {
                                   "CardSwipeOrientation.RIGHT")) {
                                 FirebaseFirestore.instance
                                     .collection('user')
-                                    .doc(user.uid)
+                                    .doc(user?.uid)
                                     .update({
                                   "ListUidMatch": FieldValue.arrayUnion(
-                                      [snapshot.data.docs[index].get('uid')]),
+                                      [snapshot.data?.docs[index].get('uid')]),
                                 });
                               } else {}
                             }
@@ -457,13 +460,14 @@ class _ExplorePageState extends State<ExplorePage> {
                 } else {
                   return Text("");
                 }
+                return Text('');
               },
             );
           } else {
             return StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection('user')
-                  .where('uid', isEqualTo: user.uid)
+                  .where('uid', isEqualTo: user?.uid)
                   .snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshotSex) {
@@ -475,13 +479,14 @@ class _ExplorePageState extends State<ExplorePage> {
                 // print(snapshot.data.docs.length);
 
                 for (var index = 0;
-                    index < snapshotSex.data.docs.length;
+                    index < snapshotSex.data!.docs.length;
                     index++) {
-                  sexChooseAuth = snapshotSex.data.docs[index].get('sexChoose');
+                  sexChooseAuth =
+                      snapshotSex.data?.docs[index].get('sexChoose');
                   return StreamBuilder(
                     stream: FirebaseFirestore.instance
                         .collection('user')
-                        .where('uid', isNotEqualTo: user.uid)
+                        .where('uid', isNotEqualTo: user?.uid)
                         .where('gender', isEqualTo: sexChooseAuth)
                         .snapshots(),
                     builder: (BuildContext context,
@@ -523,7 +528,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
                                           image: NetworkImage(snapshot
-                                              .data.docs[index]
+                                              .data?.docs[index]
                                               .get('img')[0]),
                                           fit: BoxFit.cover,
                                         ),
@@ -558,7 +563,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                       Row(
                                                         children: [
                                                           Text(
-                                                            snapshot.data
+                                                            snapshot.data!
                                                                 .docs[index]
                                                                 .get('name'),
                                                             style: TextStyle(
@@ -615,7 +620,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                       Row(
                                                         children: List.generate(
                                                           snapshot
-                                                              .data.docs[index]
+                                                              .data?.docs[index]
                                                               .get('favorite')
                                                               .length,
                                                           (indexlikes) {
@@ -658,7 +663,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                                     ),
                                                                     child: Text(
                                                                       snapshot
-                                                                          .data
+                                                                          .data!
                                                                           .docs[
                                                                               index]
                                                                           .get(
@@ -704,7 +709,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                                     ),
                                                                     child: Text(
                                                                       snapshot
-                                                                          .data
+                                                                          .data!
                                                                           .docs[
                                                                               index]
                                                                           .get(
@@ -743,7 +748,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                                                   (context) =>
                                                                       DetailUser(
                                                                 uid: snapshot
-                                                                    .data
+                                                                    .data!
                                                                     .docs[index]
                                                                     .get('uid'),
                                                               ),
@@ -798,7 +803,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                 ),
                               ),
                             ),
-                            totalNum: snapshot.data.docs.length,
+                            totalNum: snapshot.data?.docs.length,
                             swipeCompleteCallback:
                                 (CardSwipeOrientation orientation,
                                     int index) async {
@@ -810,11 +815,11 @@ class _ExplorePageState extends State<ExplorePage> {
                                       .collection('user')
                                       .where(
                                         'uid',
-                                        isEqualTo: snapshot.data.docs[index]
+                                        isEqualTo: snapshot.data?.docs[index]
                                             .get('uid'),
                                       )
                                       .where('ListUidMatch',
-                                          arrayContains: user.uid)
+                                          arrayContains: user?.uid)
                                       .limit(1)
                                       .get();
                               final List<DocumentSnapshot> documents =
@@ -824,33 +829,36 @@ class _ExplorePageState extends State<ExplorePage> {
                                     "CardSwipeOrientation.RIGHT")) {
                                   FirebaseFirestore.instance
                                       .collection('match')
-                                      .doc(user.uid)
+                                      .doc(user?.uid)
                                       .update({
-                                    "ListUidMatch": FieldValue.arrayUnion(
-                                        [snapshot.data.docs[index].get('uid')]),
+                                    "ListUidMatch": FieldValue.arrayUnion([
+                                      snapshot.data?.docs[index].get('uid')
+                                    ]),
                                     "time": Timestamp.now(),
                                   });
 
                                   FirebaseFirestore.instance
                                       .collection('match')
-                                      .doc(snapshot.data.docs[index].get('uid'))
+                                      .doc(
+                                          snapshot.data?.docs[index].get('uid'))
                                       .update({
                                     "ListUidMatch":
-                                        FieldValue.arrayUnion([user.uid]),
+                                        FieldValue.arrayUnion([user?.uid]),
                                     "time": Timestamp.now(),
                                   });
 
                                   FirebaseFirestore.instance
                                       .collection('user')
-                                      .doc(user.uid)
+                                      .doc(user?.uid)
                                       .update({
-                                    "ListUidMatch": FieldValue.arrayUnion(
-                                        [snapshot.data.docs[index].get('uid')]),
+                                    "ListUidMatch": FieldValue.arrayUnion([
+                                      snapshot.data?.docs[index].get('uid')
+                                    ]),
                                   });
 
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => MatchPage(
-                                          uidCheck: snapshot.data.docs[index]
+                                          uidCheck: snapshot.data?.docs[index]
                                               .get('uid'))));
                                 } else {
                                   print("không match");
@@ -860,10 +868,11 @@ class _ExplorePageState extends State<ExplorePage> {
                                     "CardSwipeOrientation.RIGHT")) {
                                   FirebaseFirestore.instance
                                       .collection('user')
-                                      .doc(user.uid)
+                                      .doc(user?.uid)
                                       .update({
-                                    "ListUidMatch": FieldValue.arrayUnion(
-                                        [snapshot.data.docs[index].get('uid')]),
+                                    "ListUidMatch": FieldValue.arrayUnion([
+                                      snapshot.data?.docs[index].get('uid')
+                                    ]),
                                   });
                                 } else {
                                   print("không match");
@@ -880,6 +889,7 @@ class _ExplorePageState extends State<ExplorePage> {
                     },
                   );
                 }
+                return Text('');
               },
             );
           }

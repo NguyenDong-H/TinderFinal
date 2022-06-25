@@ -1,5 +1,3 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalproject/pages/home/user/setting/update/updatePhone/updatePhone.dart';
 import 'package:finalproject/pages/loginPhone/register_email.dart';
@@ -12,7 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class ChangePhone extends StatefulWidget {
-  const ChangePhone({Key key}) : super(key: key);
+  const ChangePhone({Key? key}) : super(key: key);
 
   @override
   State<ChangePhone> createState() => _ChangePhoneState();
@@ -222,7 +220,7 @@ class _ChangePhoneState extends State<ChangePhone> {
         verificationFailed: (FirebaseAuthException e) {
           print(e.message);
         },
-        codeSent: (String verificationId, int resendToken) {
+        codeSent: (String verificationId, int? resendToken) {
           otpVisibility = true;
           verificationID = verificationId;
           setState(() {});
@@ -242,8 +240,8 @@ class _ChangePhoneState extends State<ChangePhone> {
         MaterialPageRoute(builder: (context) => UpdatePhone()),
       );
 
-      User user = FirebaseAuth.instance.currentUser;
-      await FirebaseFirestore.instance.collection('user').doc(user.uid).set({
+      User? user = FirebaseAuth.instance.currentUser;
+      await FirebaseFirestore.instance.collection('user').doc(user?.uid).set({
         'phone': phoneNumber.text,
       });
 

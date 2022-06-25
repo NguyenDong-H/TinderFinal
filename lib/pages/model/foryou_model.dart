@@ -1,11 +1,12 @@
-//By Nguyễn Hiểu Đông
+//
+import 'package:flutter/cupertino.dart';
 
 class ForyouModel {
-  String title;
-  String image;
-  String subtitle;
-  String textbutton;
-  String id;
+  String? title;
+  String? image;
+  String? subtitle;
+  String? textbutton;
+  String? id;
 
   ForyouModel(
       {this.title, this.image, this.subtitle, this.textbutton, this.id});

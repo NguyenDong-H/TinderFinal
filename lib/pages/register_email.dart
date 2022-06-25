@@ -94,10 +94,10 @@ class _EmailRegisterPageState extends State<EmailRegisterPage> {
               context,
               MaterialPageRoute(builder: (context) => WelcomePage()),
             );
-            User user = FirebaseAuth.instance.currentUser;
+            User? user = FirebaseAuth.instance.currentUser;
             await FirebaseFirestore.instance
                 .collection('user')
-                .doc(user.uid)
+                .doc(user?.uid)
                 .update({
               'email': _email.text,
             });

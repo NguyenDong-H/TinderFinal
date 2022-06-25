@@ -1,12 +1,10 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:finalproject/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class UpdateEmail extends StatefulWidget {
-  const UpdateEmail({Key key}) : super(key: key);
+  const UpdateEmail({Key ? key}) : super(key: key);
 
   @override
   State<UpdateEmail> createState() => _UpdateEmailState();

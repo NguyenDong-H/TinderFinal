@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class Test_3 extends StatelessWidget {
-  const Test_3({Key key}) : super(key: key);
+  const Test_3({Key ? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

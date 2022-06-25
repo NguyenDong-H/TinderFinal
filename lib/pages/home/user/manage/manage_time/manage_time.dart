@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ManageTime extends StatefulWidget {
-  const ManageTime({Key key}) : super(key: key);
+  const ManageTime({Key ? key}) : super(key: key);
 
   @override
   State<ManageTime> createState() => _ManageTimeState();

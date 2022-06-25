@@ -9,14 +9,14 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class BirthdayPage extends StatefulWidget {
-  const BirthdayPage({Key key}) : super(key: key);
+  const BirthdayPage({Key? key}) : super(key: key);
 
   @override
   State<BirthdayPage> createState() => _BirthdayPageState();
 }
 
 class _BirthdayPageState extends State<BirthdayPage> {
-  DateTime _chosenDateTime;
+  DateTime? _chosenDateTime;
   @override
   final _formKey = GlobalKey<FormState>();
 
@@ -108,10 +108,10 @@ class _BirthdayPageState extends State<BirthdayPage> {
         InkWell(
           borderRadius: BorderRadius.circular(60),
           onTap: (() async {
-            User user = FirebaseAuth.instance.currentUser;
+            User? user = FirebaseAuth.instance.currentUser;
             await FirebaseFirestore.instance
                 .collection('user')
-                .doc(user.uid)
+                .doc(user?.uid)
                 .update({
               'birthday': _chosenDateTime.toString(),
             });

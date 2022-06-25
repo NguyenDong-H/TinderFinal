@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class Gift extends StatelessWidget {
   const Gift({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

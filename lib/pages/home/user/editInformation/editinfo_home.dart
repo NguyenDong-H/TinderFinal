@@ -1,5 +1,3 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:finalproject/pages/home/user/editInformation/edit.dart';
 import 'package:finalproject/pages/home/user/editInformation/preview.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 class EditInfoHome extends StatelessWidget {
   const EditInfoHome({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -53,7 +51,7 @@ class EditInfoHome extends StatelessWidget {
           ],
         ),
         body: TabBarView(
-          children: [Edit(), const Preview()],
+          children: [Edit(), Preview()],
         ),
       ),
     );

@@ -6,7 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class DetailChat extends StatefulWidget {
-  DetailChat({Key key, @required this.uid, @required this.idChatRoom})
+  DetailChat({Key? key, required this.uid, required this.idChatRoom})
       : super(key: key);
   final String uid;
   final String idChatRoom;
@@ -17,7 +17,7 @@ class DetailChat extends StatefulWidget {
 
 class _DetailChatState extends State<DetailChat> {
   TextEditingController _value = TextEditingController();
-  User user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +37,12 @@ class _DetailChatState extends State<DetailChat> {
               child: CircularProgressIndicator(),
             );
           }
-          if (snapshot.data.docs.length > 0) {
+          if (snapshot.data!.docs.length > 0) {
             return ListView.builder(
-              itemCount: snapshot.data.docs.length,
+              itemCount: snapshot.data?.docs.length,
               itemBuilder: (context, indexMessage) {
-                if (snapshot.data.docs[indexMessage].get('uidSender') ==
-                    user.uid) {
+                if (snapshot.data?.docs[indexMessage].get('uidSender') ==
+                    user?.uid) {
                   return Container(
                     alignment: Alignment.centerRight,
                     child: Container(
@@ -54,7 +54,7 @@ class _DetailChatState extends State<DetailChat> {
                         color: Colors.blue,
                       ),
                       child: Text(
-                        snapshot.data.docs[indexMessage].get('content'),
+                        snapshot.data?.docs[indexMessage].get('content'),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -63,7 +63,7 @@ class _DetailChatState extends State<DetailChat> {
                       ),
                     ),
                   );
-                } else if (snapshot.data.docs[indexMessage].get('uidSender') ==
+                } else if (snapshot.data?.docs[indexMessage].get('uidSender') ==
                     widget.uid) {
                   return Container(
                     alignment: Alignment.centerLeft,
@@ -76,7 +76,7 @@ class _DetailChatState extends State<DetailChat> {
                         color: Colors.grey,
                       ),
                       child: Text(
-                        snapshot.data.docs[indexMessage].get('content'),
+                        snapshot.data?.docs[indexMessage].get('content'),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -86,6 +86,7 @@ class _DetailChatState extends State<DetailChat> {
                     ),
                   );
                 }
+                return Text('');
               },
             );
           } else {
@@ -102,7 +103,7 @@ class _DetailChatState extends State<DetailChat> {
                   );
                 } else {
                   return ListView.builder(
-                    itemCount: snapshotUser.data.docs.length,
+                    itemCount: snapshotUser.data?.docs.length,
                     itemBuilder: (context, indexUser) {
                       return Column(
                         children: [
@@ -117,7 +118,7 @@ class _DetailChatState extends State<DetailChat> {
                                 children: <TextSpan>[
                                   TextSpan(text: 'Bạn đã tương hợp với '),
                                   TextSpan(
-                                      text: snapshotUser.data.docs[indexUser]
+                                      text: snapshotUser.data?.docs[indexUser]
                                           .get('name'),
                                       style: const TextStyle(
                                           fontWeight: FontWeight.bold)),
@@ -144,7 +145,7 @@ class _DetailChatState extends State<DetailChat> {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                 image: NetworkImage(
-                                  snapshotUser.data.docs[indexUser]['img'][0],
+                                  snapshotUser.data?.docs[indexUser]['img'][0],
                                 ),
                                 fit: BoxFit.cover,
                               ),
@@ -161,7 +162,7 @@ class _DetailChatState extends State<DetailChat> {
                                 children: <TextSpan>[
                                   TextSpan(text: 'Biết khi nào '),
                                   TextSpan(
-                                    text: snapshotUser.data.docs[indexUser]
+                                    text: snapshotUser.data?.docs[indexUser]
                                         .get('name'),
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold),
@@ -232,10 +233,10 @@ class _DetailChatState extends State<DetailChat> {
               margin: EdgeInsets.only(right: 15),
               child: InkWell(
                 onTap: () async {
-                  User user = FirebaseAuth.instance.currentUser;
+                  User? user = FirebaseAuth.instance.currentUser;
                   await FirebaseFirestore.instance.collection('chat').add(
                     {
-                      'uidSender': user.uid,
+                      'uidSender': user?.uid,
                       'content': _value.text,
                       'createAt': Timestamp.now(),
                       'idChatroom': widget.idChatRoom,
@@ -278,7 +279,7 @@ class _DetailChatState extends State<DetailChat> {
           }
           return Row(
             children: List.generate(
-              snapshot.data.docs.length,
+              snapshot.data!.docs.length,
               (index) {
                 return Column(
                   children: [
@@ -307,7 +308,7 @@ class _DetailChatState extends State<DetailChat> {
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                    snapshot.data.docs[index]['img'][0],
+                                    snapshot.data?.docs[index]['img'][0],
                                   ),
                                   fit: BoxFit.cover,
                                 ),
@@ -345,7 +346,7 @@ class _DetailChatState extends State<DetailChat> {
                     ),
                     Center(
                       child: Text(
-                        snapshot.data.docs[index].get('name'),
+                        snapshot.data?.docs[index].get('name'),
                         style: TextStyle(color: black, fontSize: 13),
                       ),
                     ),

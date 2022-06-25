@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ManageReason extends StatefulWidget {
-  const ManageReason({Key key}) : super(key: key);
+  const ManageReason({Key ? key}) : super(key: key);
 
   @override
   State<ManageReason> createState() => _ManageReasonState();

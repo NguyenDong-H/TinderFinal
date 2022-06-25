@@ -1,10 +1,8 @@
-//By Nguyễn Hiểu Đông
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ManageNoti extends StatefulWidget {
-  const ManageNoti({Key key}) : super(key: key);
+  const ManageNoti({Key ? key}) : super(key: key);
 
   @override
   State<ManageNoti> createState() => _ManageNotiState();
