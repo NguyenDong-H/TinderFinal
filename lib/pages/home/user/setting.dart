@@ -4,11 +4,14 @@ import 'package:expandable_slider/expandable_slider.dart';
 import 'package:finalproject/pages/home/user/address/address_update.dart';
 import 'package:finalproject/pages/home/user/manage/active/active.dart';
 import 'package:finalproject/pages/home/user/manage/active/is_active.dart';
+import 'package:finalproject/pages/home/user/manage/block_contact/block_contact.dart';
 import 'package:finalproject/pages/home/user/manage/manage_notification/manage_noti.dart';
 import 'package:finalproject/pages/home/user/manage/manage_reason/manage_reason.dart';
 import 'package:finalproject/pages/home/user/manage/manage_selective/manage_select.dart';
 import 'package:finalproject/pages/home/user/manage/manage_time/manage_time.dart';
+import 'package:finalproject/pages/home/user/manage/user_name/user_name.dart';
 import 'package:finalproject/pages/home/user/manage/vaccine/vaccine_center.dart';
+import 'package:finalproject/pages/home/user/manage/video_autoplay/video.dart';
 
 import 'package:finalproject/pages/home/user/setting/setting_card.dart';
 import 'package:finalproject/pages/home/user/setting/update/updateLinkSocial/updateConnectiveSocial.dart';
@@ -20,6 +23,8 @@ import 'package:finalproject/pages/home/user/setting/widget/setting_card2.dart';
 import 'package:finalproject/pages/home/user/setting/widget/star_card.dart';
 import 'package:finalproject/pages/home/user/setting/widget/thunder_card.dart';
 import 'package:finalproject/pages/home/user/sex_choices/sex.dart';
+import 'package:finalproject/pages/home/user/shield/page/guide_screen.dart';
+import 'package:finalproject/pages/home/user/shield/page/safe_center_screen.dart';
 
 import 'package:finalproject/pages/login.dart';
 import 'package:finalproject/theme/colors.dart';
@@ -31,7 +36,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Setting extends StatefulWidget {
-  const Setting({Key ? key}) : super(key: key);
+  const Setting({Key? key}) : super(key: key);
 
   @override
   State<Setting> createState() => _SettingState();
@@ -986,7 +991,7 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(builder: (context) => BlockContact()),
                       );
                     },
                     child: Hero(
@@ -1417,7 +1422,8 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(
+                            builder: (context) => VideoAutoPlay()),
                       );
                     },
                     child: Hero(
@@ -1597,7 +1603,7 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(builder: (context) => UserName()),
                       );
                     },
                     child: Hero(
@@ -2048,7 +2054,8 @@ class _SettingState extends State<Setting> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UpdatePhone()),
+                        MaterialPageRoute(
+                            builder: (context) => SafeCenterScreen()),
                       );
                     },
                     child: Hero(

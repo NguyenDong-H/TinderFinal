@@ -255,7 +255,7 @@ class _LoginMutilPageState extends State<LoginMutilPage> {
                 height: 50,
                 child: Center(
                   child: Text(
-                    "ĐĂNG NHẬP VỚI Google",
+                    "ĐĂNG NHẬP VỚI GOOGLE",
                     style: TextStyle(
                       color: white,
                       fontWeight: FontWeight.w500,

@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:finalproject/pages/home/root_app.dart';
 import 'package:finalproject/pages/home/user/editInformation/edit.dart';
+import 'package:finalproject/pages/home/user/manage/block_contact/block_contact.dart';
 import 'package:finalproject/pages/home/user/setting.dart';
 import 'package:finalproject/pages/home/user/shield/page/safe_center_screen.dart';
 import 'package:finalproject/pages/loginPhone/SexualOrientation_page.dart';
@@ -20,8 +21,8 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: user != null ? RootApp() : LoginPage(),
-      // home: LoginPage(),
+      //home: user != null ? RootApp() : LoginPage(),
+      home: Setting(),
     ),
   );
   // home: Setting(),

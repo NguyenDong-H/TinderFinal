@@ -1,4 +1,4 @@
-import 'package:basic_utils/basic_utils.dart';
+/* import 'package:basic_utils/basic_utils.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -103,3 +103,4 @@ class ExtendedVehicleInfo {
     return 'ExtendedVehicleInfo[make=$make, model=$model, vehicleType=$vehicleType]';
   }
 }
+ */

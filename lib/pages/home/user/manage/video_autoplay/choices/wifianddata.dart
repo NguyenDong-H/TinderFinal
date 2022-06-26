@@ -1,8 +1,8 @@
 //Done
 import 'package:flutter/material.dart';
 
-class Female extends StatelessWidget {
-  const Female({
+class WifiAndData extends StatelessWidget {
+  const WifiAndData({
     Key? key,
   }) : super(key: key);
 
@@ -19,7 +19,7 @@ class Female extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 21),
               child: Text(
-                "Nữ",
+                "Bật Wifi và Dữ Liệu Di Động",
                 style: TextStyle(fontSize: 18),
               ),
             ),

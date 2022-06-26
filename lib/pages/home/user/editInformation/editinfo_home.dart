@@ -51,7 +51,12 @@ class EditInfoHome extends StatelessWidget {
           ],
         ),
         body: TabBarView(
-          children: [Edit(), Preview()],
+          children: [
+            Edit(),
+            Preview(
+              uid: '',
+            )
+          ],
         ),
       ),
     );

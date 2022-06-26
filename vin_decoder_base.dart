@@ -1,4 +1,4 @@
-import 'manufacturers.dart';
+/* import 'manufacturers.dart';
 import 'nhtsa_model.dart';
 import 'year_map.dart';
 
@@ -127,3 +127,4 @@ class VIN {
   @override
   String toString() => this.wmi + this.vds + this.vis;
 }
+ */

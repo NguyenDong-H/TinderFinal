@@ -1,8 +1,8 @@
 //Done
 import 'package:flutter/material.dart';
 
-class Female extends StatelessWidget {
-  const Female({
+class nonAutoPlay extends StatelessWidget {
+  const nonAutoPlay({
     Key? key,
   }) : super(key: key);
 
@@ -19,15 +19,8 @@ class Female extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 21),
               child: Text(
-                "Nữ",
+                "Không phát tự động video",
                 style: TextStyle(fontSize: 18),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 14),
-              child: Icon(
-                Icons.check,
-                color: Colors.pink,
               ),
             ),
           ],
