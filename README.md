@@ -1,7 +1,7 @@
 # finalproject
 ## Written by Nguyen Minh Quan
 
-1/ Lỗi do sdk version cũ dẫn đến một số thư viện bị xung đột 
+### 1/ Lỗi do sdk version cũ dẫn đến một số thư viện bị xung đột 
 
 -> Đầu tiên nên update lên version mới nhất hiện tại bản stable
 
@@ -19,21 +19,21 @@ b) Hướng dẫn cách cấu hình lại nếu gặp lỗi ở file vin_decobar
 ---> Truy cập vào file vin_decobar_base.dart 
 - Copy phần code đã sửa từ file vin_decobar_base được cung cấp khi clone project 
 ---> và paste vào file vin_decobar_base.dart bị báo lỗi trên máy
-
 -> Truy cập đường link 
-2/ Cấu hình developer facebook
+
+### 2/ Cấu hình developer facebook
 
 -> Cài đặt thư viện OpenSSL -> Chỉnh sửa path 
 -> keytool -exportcert -alias androiddebugkey -keystore "C:\Users\USERNAME\.android\debug.keystore" | "PATH_TO_OPENSSL_LIBRARY\bin\openssl" sha1 -binary | "PATH_TO_OPENSSL_LIBRARY\bin\openssl" base64
 -> Copy vào run bằng cmd 
 
-3/ Đường link video hướng dẫn chạy project khi bị lỗi như mục 1, hướng dẫn get SAH-1 key và cài đặt thư viện OpenSSL để login bằng google và facebook
+### 3/ Đường link video hướng dẫn chạy project khi bị lỗi như mục 1, hướng dẫn get SAH-1 key và cài đặt thư viện OpenSSL để login bằng google và facebook
 https://www.youtube.com/watch?v=aGRO6fh3lP4sS
 
-4/ Đường link video demo project của nhóm:
+### 4/ Đường link video demo project của nhóm:
 https://www.youtube.com/watch?v=kTAZaXiQ8tA
 
-5/ Sẽ cập nhật thêm nếu có phát sinh 
+### 5/ Sẽ cập nhật thêm nếu có phát sinh XIN CẢM ƠN
 
 ## Getting Started
 
