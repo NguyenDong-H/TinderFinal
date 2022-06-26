@@ -8,15 +8,14 @@
 Nếu gặp lỗi thì hãy làm theo 2 hướng dẫn sau:
 a) Hướng dẫn cách cấu hình lại nếu gặp lỗi ở file nhtsa_model.dart
 - Lỗi flutter version bị cũ ---> Nên config khác nhau , xóa theo lỗi hướng dẫn báo trong IDE đang xài hoặc copy paste file nhtsa_model.dart đã cung cấp vào.
--> Truy cập đường dẫn C:\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src ( nơi đặt sdk của flutter )
+- Truy cập đường dẫn D:\RunNow\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src\nhtsa_model.dart ( nơi đặt sdk của flutter trong máy tùy theo lúc bạn cài đặt )
 ---> Truy cập vào file nhtsa_model.dart 
-
 - Copy phần code đã sửa từ file nhtsa_model.dart được cung cấp khi clone project
 ---> và paste vào file nhtsa_model.dart bị báo lỗi trên máy
 
 b) Hướng dẫn cách cấu hình lại nếu gặp lỗi ở file vin_decobar_base.dart
-- Lỗi flutter version bị cũ ---> Nên config khác nhau , xóa theo lỗi hướng dẫn báo trong IDE đang xài hoặc copy paste file vin_decobar_base.dart đã cung cấp 
--> Try cập vào đường dẫn C:\flutter_sdk\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src ( nơi đặt sdk của flutter )
+- Lỗi flutter version bị cũ ---> Nên config khác nhau , xóa theo lỗi hướng dẫn báo trong IDE đang xài hoặc copy paste file vin_decobar_base.dart đã cung cấp.
+- Truy cập vào đường dẫn D:\RunNow\flutter\.pub-cache\hosted\pub.dartlang.org\vin_decoder-0.1.4\lib\src\vin_decoder_base.dart ( nơi đặt sdk của flutter trong máy tùy theo lúc bạn cài đặt )
 ---> Truy cập vào file vin_decobar_base.dart 
 - Copy phần code đã sửa từ file vin_decobar_base được cung cấp khi clone project 
 ---> và paste vào file vin_decobar_base.dart bị báo lỗi trên máy
