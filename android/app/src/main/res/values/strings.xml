@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="facebook_app_id">1386622441815887</string>
-<string name="app_name">Login</string>
-<string name="fb_login_protocol_scheme">fb1386622441815887</string>
+    <string name="facebook_app_id">587649219386387</string>
+    <string name="app_name">Loginwithfbtinder</string>
+    <string name="fb_login_protocol_scheme">fb587649219386387</string>
+    <string name="facebook_client_token">c7ff13c5c9a96f0780b3fc5c9e1d1b2e</string>
 </resources>
 
 

@@ -1,4 +1,3 @@
-//Done
 import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,7 +10,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({Key? key}) : super(key: key);
+  const ChatPage({Key ? key}) : super(key: key);
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -128,8 +127,7 @@ class _ChatPageState extends State<ChatPage> {
                                       .collection('match')
                                       .where(
                                         'ListUidMatch',
-                                        arrayContains: snapshot
-                                            .data!.docs[index]
+                                        arrayContains: snapshot.data!.docs[index]
                                             .get('uid'),
                                       )
                                       .snapshots(),
